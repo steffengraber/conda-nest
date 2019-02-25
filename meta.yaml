@@ -1,0 +1,87 @@
+{% set version = "v2.16.0" %}
+package:
+  name: nest
+  version: {{ version }}
+
+source:
+  git_rev: {{ version  }}
+  git_url: https://github.com/nest/nest-simulator.git
+
+build:
+  skip: true  # [osx]
+
+requirements:
+  channels:
+    - conda-forge
+    - defaults
+  build:
+    - cmake >=3.6
+    - {{ compiler('c') }}
+  host:
+    - cmake
+    - cython
+    - docutils
+    - future
+    - gcc_linux-64
+    - gxx_linux-64
+    - gsl
+    - icu
+    - jsoncpp
+    - libtool
+    - matplotlib
+    - mpi4py
+    - mkl
+    - ncurses
+    - numpy
+    - numpydoc
+    - openblas
+    - openmpi
+    - pandas
+    - path.py
+    - python =3.5
+    - pyqt
+    - readline
+    - scipy
+    - setuptools
+    - statsmodels
+  run:
+    - cython
+    - docutils
+    - future
+    - gsl
+    - icu
+    - jsoncpp
+    - libtool
+    - matplotlib
+    - mkl
+    - mpi4py
+    - ncurses
+    - numpy
+    - numpydoc
+    - openblas
+    - openmpi
+    - pandas
+    - path.py
+    - python =3.5
+    - pyqt
+    - readline
+    - scipy
+    - setuptools
+    - statsmodels
+
+test:
+  imports:
+    - nest
+  commands:
+    - nest --help
+    - sli --help
+
+about:
+  home: http://www.nest-simulator.org/
+  license: GPL
+  summary: "NEST is a simulator for spiking neural network models."
+
+extra:
+  container:
+    # openmpi needs ssh/rsh
+    extended-base: true
