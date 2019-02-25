@@ -2,13 +2,15 @@
 
 ## Build the packages
 
-    conda build .
-
-Choose the version you want to build by editing the first line in 
+First choose the version you want to build by editing the first line in 
 'meta.yaml', eg:
 
     {% set version = "v2.16.0" %}
     
+Then buil the package
+
+    conda build .
+
 Install it
 
    conda install --use-local nest=v2.16.0
