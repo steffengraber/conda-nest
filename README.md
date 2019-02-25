@@ -7,7 +7,7 @@ First choose the version you want to build by editing the first line in
 
     {% set version = "v2.16.0" %}
     
-Then buil the package
+Then build the package
 
     conda build .
 
