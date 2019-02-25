@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/steffengraber/conda-nest.svg?branch=master)](https://travis-ci.org/steffengraber/conda-nest)
+
+
 # NEST simulator conda build files
 
 ## Build the packages
