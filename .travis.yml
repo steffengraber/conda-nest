@@ -7,7 +7,7 @@ services:
 
 before_install:
 - docker pull continuumio/miniconda3
-- docker run --name mini -it --rm -v  $(pwd):/data continuumio/miniconda3 /bin/bash
+- docker run --name mini -it -d -v  $(pwd):/data continuumio/miniconda3 
 - docker exec -it mini chmod +x /data/.travis.sh
 - docker exec -it mini  /data/.travis.sh
 
