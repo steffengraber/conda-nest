@@ -14,6 +14,7 @@ script:
 
 deploy:
   provider: script
+  script: docker exec -it mini chmod +x /opt/conda-nest/anaconda_push.sh
   script: docker exec -it mini /opt/conda-nest/anaconda_push.sh
   on:
     branch: master
