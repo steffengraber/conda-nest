@@ -5,8 +5,7 @@ services:
 
 before_install:
   - docker build -t nest/conda .
-  - docker run --name mini -it -d -v $(pwd):/data \
-               -e C_TOKEN=$CONDA_UPLOAD_TOKEN  \
+  - docker run --name mini -it -d -e C_TOKEN=$CONDA_UPLOAD_TOKEN  \
                -e C_USER=$ANACONDA_USER \
                nest/conda
   - docker ps -a
