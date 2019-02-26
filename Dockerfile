@@ -22,6 +22,7 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /opt/conda-nest
 COPY ./build.sh /opt/conda-nest
 COPY ./meta.yaml /opt/conda-nest
+COPY ./.meta/anaconda_push.sh /opt/conda-nest
 
 RUN conda build /opt/conda-nest && \
     echo "\n\n## BUILD AND ALL CHECKS ARE DONE ##\n\n" && \
