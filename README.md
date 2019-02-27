@@ -18,15 +18,17 @@ Until now the packages are tested under Ubuntu 18.04.
 
 2.  Activate the environment
 
-        source activate nest
+        conda activate nest
 
 3.  Install NEST
 
-        conda install -c steffengraber -c conda-forge nest=v2.16.0
+    For NEST simulator v2.16.0:
 
-    or for master
+        conda install -c steffengraber -c conda-forge nest
 
-        conda install -c steffengraber -c conda-forge nest=master
+    For NEST simulator master
+
+        conda install -c steffengraber/label/daily -c conda-forge nest
 
 
 ## Build and install the packages by hand
