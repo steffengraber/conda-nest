@@ -4,11 +4,8 @@ services:
   - docker
 
 before_install:
-  - docker build -t nest/conda .
-  - docker run --name mini -it -d -v $(pwd):/data \
-               -e C_TOKEN=$CONDA_UPLOAD_TOKEN  \
-               -e C_USER=$ANACONDA_USER \
-               nest/conda
+  - docker build -t nest/conda ./nest
+  - docker run --name mini -it -d -e c_token=$co_token -e c_user=$co_user nest/conda
   - docker ps -a
   - docker images
 
@@ -17,6 +14,6 @@ script:
 
 deploy:
   provider: script
-  script: docker exec -it mini /opt/conda-nest/anaconda_push.sh
+  script: docker exec -it mini bash /opt/conda-nest/anaconda_push.sh
   on:
     branch: master
