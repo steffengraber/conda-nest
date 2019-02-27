@@ -25,6 +25,7 @@ COPY ./meta.yaml /opt/conda-nest
 COPY ./anaconda_push.sh /opt/conda-nest
 
 RUN conda build /opt/conda-nest && \
+    chmod +x /opt/conda-nest/anaconda_push.sh && \
     echo "\n\n## BUILD AND ALL CHECKS ARE DONE ##\n\n" && \
     env && \
     pwd && \
