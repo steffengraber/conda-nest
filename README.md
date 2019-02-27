@@ -24,11 +24,11 @@ Until now the packages are tested under Ubuntu 18.04.
 
     For NEST simulator v2.16.0:
 
-        conda install -c steffengraber -c conda-forge nest
+        conda install -c steffengraber -c conda-forge nest=v2.16.0
 
     For NEST simulator master
 
-        conda install -c steffengraber/label/daily -c conda-forge nest
+        conda install -c steffengraber -c conda-forge nest=master
 
 
 ## Build and install the packages by hand
