@@ -3,36 +3,45 @@
 
 # NEST simulator conda build files
 
-## Build the packages
+Easy install different versions NEST simulator in conda environments.
+The 'master'-branch of NEST is daily build.  
+Until now the packages are tested under Ubuntu 18.04.
 
-First choose the version you want to build by editing the first line in 
-'meta.yaml', eg:
+## Install NEST simulator
 
-    {% set version = "v2.16.0" %}
-    
-Then build the package
+1.  Create a clean environment
 
-    conda build .
+    Of course you can use your own environment. But if you have problems, a new clean one is recommended.
 
-Install it
-
-   conda install --use-local nest=v2.16.0
+        conad create --name nest
 
 
-## Using prebuild packages
+2.  Activate the environment
 
-### Create a clean environment
+        conda activate nest
 
-    conad create --name nest
+3.  Install NEST
 
-### Activate it
+    For NEST simulator v2.16.0:
 
-    source activate nest
+        conda install -c steffengraber -c conda-forge nest=v2.16.0
 
-### Install NEST simulator
+    For NEST simulator master
 
-    conda install -c steffengraber -c conda-forge nest=v2.16.0
-    
-    or for master
-     
-    conda install -c steffengraber -c conda-forge nest=master
+        conda install -c steffengraber -c conda-forge nest=master
+
+
+## Build and install the packages by hand
+
+1.  Choose the version you want to build by editing the first line in
+    'meta.yaml', eg:
+
+        {% set version = "v2.16.0" %}
+
+2.  Build the package
+
+        conda build .
+
+3.  Install it
+
+        conda install --use-local nest=v2.16.0
