@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="master"
+VERSION="v2.16.0"
 
 PKG_NAME=$(conda build . --output)
-anaconda -t $c_token upload -v $VERSION --force -u $c_user -l daily -l main $PKG_NAME
+anaconda -t $c_token upload -v $VERSION --force -u $c_user -l nest.simulator -l main $PKG_NAME

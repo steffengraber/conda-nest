@@ -1,4 +1,4 @@
-{% set version = "master" %}
+{% set version = "v2.16.0" %}
 package:
   name: nest
   version: {{ version }}
