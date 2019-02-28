@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/steffengraber/conda-nest.svg?branch=master)](https://travis-ci.org/steffengraber/conda-nest)
 
-# NEST simulator conda build files
+# NEST simulator - conda build files
 
 Easy install different versions NEST simulator in conda environments.
 The 'master'-branch of NEST is daily build.  
