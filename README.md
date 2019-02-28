@@ -4,7 +4,10 @@
 
 Easy install different versions NEST simulator in conda environments.
 The 'master'-branch of NEST is daily build.  
-Until now the packages are tested under Ubuntu 18.04.
+Until now tested with:
+
+-   Ubuntu 18.04
+-   SUSE Leap 15.0
 
 ## Install NEST simulator
 
