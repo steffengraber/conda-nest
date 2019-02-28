@@ -12,7 +12,7 @@ Until now the packages are tested under Ubuntu 18.04.
 
     Of course you can use your own environment. But if you have problems, a new clean one is recommended.
 
-        conad create --name nest
+        conda create --name nest
 
 2.  Activate the environment
 
