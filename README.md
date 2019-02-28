@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/steffengraber/conda-nest.svg?branch=master)](https://travis-ci.org/steffengraber/conda-nest)
 
-# NEST simulator conda build files
+# NEST simulator - conda build files
 
 Easy install different versions NEST simulator in conda environments.
 The 'master'-branch of NEST is daily build.  
@@ -27,7 +27,6 @@ Until now the packages are tested under Ubuntu 18.04.
     For NEST simulator master
 
         conda install -c steffengraber -c conda-forge nest=master
-
 
 ## Build and install the packages by hand
 
