@@ -48,6 +48,6 @@ install:
 
 deploy:
   provider: script
-  script: bash ./nest/anaconda_push.sh
+  script: ./nest/anaconda_push.sh
   on:
     branch: master
