@@ -23,7 +23,7 @@ cmake -DCMAKE_INSTALL_PREFIX:PATH=$PREFIX \
 make -j${CPU_COUNT}
 make install
 
-cp $PREFIX/lib64/* $PREFIX/lib -r
+[ -d $PREFIX/lib64] && cp $PREFIX/lib64/* $PREFIX/lib -r
 
 for CHANGE in "activate" "deactivate"
 do
