@@ -27,21 +27,21 @@ before_install:
   - wget http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O miniconda.sh
   - chmod +x miniconda.sh
   - ./miniconda.sh -b
-  - export PATH=$HOME/miniconda/bin:$PATH
-  - $HOME/miniconda/bin/conda update --yes conda
+  - export PATH=$HOME/miniconda2/bin:$PATH
+  - conda update --yes conda
 
 install:
 
   # We just set up a conda environment with the right Python version. This
   # should not need changing.
 
-  - $HOME/miniconda/bin/conda create --yes -n test python=$TRAVIS_PYTHON_VERSION
+  - conda create --yes -n test python=$TRAVIS_PYTHON_VERSION
   - source activate test
-  - $HOME/miniconda/bin/conda config --add channels conda-forge
-  - $HOME/miniconda/bin/conda info -a
-  - $HOME/miniconda/bin/conda install -y conda-build conda-verify anaconda-client
-  - $HOME/miniconda/bin/conda clean -y --all
-  - $HOME/miniconda/bin/conda build ./nest
+  - conda config --add channels conda-forge
+  - conda info -a
+  - conda install -y conda-build conda-verify anaconda-client
+  - conda clean -y --all
+  - conda build ./nest
   - chmod +x ./nest/anaconda_push.sh
 
 
