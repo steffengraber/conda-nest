@@ -43,12 +43,11 @@ install:
 
 
   - conda build ./nest
-  - chmod +x ./nest/anaconda_push.sh
 
 
 
 deploy:
   provider: script
-  script: ./nest/anaconda_push.sh
+  script: bash ./nest/anaconda_push.sh
   on:
     branch: master
