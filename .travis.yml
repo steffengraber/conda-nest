@@ -18,9 +18,9 @@ env:
 
 os:
   - linux
-    dist: xenial
+      dist: xenial
   - osx
-    osx_image: xcode10.2
+      osx_image: xcode10.2
 
 
 before_install:
@@ -41,10 +41,7 @@ install:
   # We just set up a conda environment with the right Python version. This
   # should not need changing.
 
-
   - conda build ./nest
-
-
 
 deploy:
   provider: script
