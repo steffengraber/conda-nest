@@ -19,8 +19,9 @@ env:
 os:
   - linux:
       dist: xenial
-  - osx:
-      osx_image: xcode10.2
+
+  # - osx:
+  # osx_image: xcode10.2
 
 
 before_install:
