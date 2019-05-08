@@ -13,13 +13,14 @@ addons:
 matrix:
   include:
     - os: linux
-      name: Xenisl with Python 3.6
+      name: "Python 3.6 on Xenial Linux"
       dist: xenial
       python: 3.6
       env: TOXENV=3.6
-
-  # - osx:
-  # osx_image: xcode10.2
+    - name: "Python 3.7 on macOS"
+      os: osx
+      osx_image: xcode10.2  # Python 3.7.2 running on macOS 10.14.3
+      language: shell       # 'language: python' is an error on Travis CI macOS
 
 before_install:
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew install wget bzip2 cmake; fi
@@ -33,6 +34,9 @@ before_install:
   - conda install -y  -c defaults -c conda-forge conda-build conda-verify anaconda-client
   - conda install -y -c conda-forge python=$TOXENV
   - conda clean -y --all
+
+script:
+  - python3 ./nest/test.py
 
 install:
   - conda build ./nest
