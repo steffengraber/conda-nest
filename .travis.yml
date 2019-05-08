@@ -26,7 +26,7 @@ before_install:
 
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew update; fi
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew tap brewsci/science; brew tap brewsci/bio; fi
-  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew install coreutils gsl open-mpi automake autoconf libtool; fi
+  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew install coreutils gcc g++ gsl open-mpi automake autoconf libtool; fi
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew upgrade wget cmake; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then MINICONDA_OS=Linux; else MINICONDA_OS=MacOSX; fi
   - pip install -U pip
