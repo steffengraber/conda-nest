@@ -13,18 +13,23 @@ addons:
 matrix:
   include:
     - os: linux
-      name: "Python 3.6 on Xenial Linux"
+      name: "NEST simulator with Python 3.6 on Xenial Linux"
       dist: xenial
       python: 3.6
       env: TOXENV=3.6
-    - name: "Python 3.6 on macOS"
+    - name: "NEST simulator wit Python 3.6 on macOS"
       os: osx
       osx_image: xcode10.2  # Python 3.7.2 running on macOS 10.14.3
       language: shell       # 'language: python' is an error on Travis CI macOS
 
 before_install:
+
+  - if [ "$TRAVIS_OS_NAME" = "osx" ]; brew update; brew tap brewsci/science; brew tap brewsci/bio; brew install coreutils gsl open-mpi automake autoconf libtool; fi
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew upgrade wget cmake; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then MINICONDA_OS=Linux; else MINICONDA_OS=MacOSX; fi
+  - pip install -U pip
+  - pip install -U setuptools
+  - pip install cython scipy matplotlib terminaltables
   - wget https://repo.anaconda.com/miniconda/Miniconda3-latest-$MINICONDA_OS-x86_64.sh -O miniconda.sh
   - bash miniconda.sh -b -p "$HOME"/miniconda
   - source "$HOME"/miniconda/etc/profile.d/conda.sh
