@@ -50,6 +50,6 @@ script:
 
 deploy:
   provider: script
-  script: ./nest/anaconda_push.sh
+  script: bash ./nest/anaconda_push.sh
   on:
     branch: master
