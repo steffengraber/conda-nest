@@ -45,7 +45,7 @@ install:
   - conda build ./nest
 
 script:
-  - conda install --use-local nest-simulator
+  # - conda install --use-local nest-simulator
   - python3 ./nest/test.py
 
 deploy:
