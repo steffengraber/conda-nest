@@ -2,6 +2,8 @@
 
 # NEST simulator - conda build files
 
+This is for testing the conda-forge packages <https://anaconda.org/conda-forge/nest-simulator>
+
 Easy install different versions NEST simulator in conda environments.
 The 'master'-branch of NEST is daily build.  
 Until now tested with:
