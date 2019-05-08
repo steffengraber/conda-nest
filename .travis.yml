@@ -17,13 +17,13 @@ matrix:
       dist: xenial
       python: 3.6
       env: TOXENV=3.6
-    - name: "Python 3.7 on macOS"
+    - name: "Python 3.6 on macOS"
       os: osx
       osx_image: xcode10.2  # Python 3.7.2 running on macOS 10.14.3
       language: shell       # 'language: python' is an error on Travis CI macOS
 
 before_install:
-  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew install wget bzip2 cmake; fi
+  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew upgrade wget cmake; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then MINICONDA_OS=Linux; else MINICONDA_OS=MacOSX; fi
   - wget https://repo.anaconda.com/miniconda/Miniconda3-latest-$MINICONDA_OS-x86_64.sh -O miniconda.sh
   - bash miniconda.sh -b -p "$HOME"/miniconda
@@ -35,11 +35,12 @@ before_install:
   - conda install -y -c conda-forge python=$TOXENV
   - conda clean -y --all
 
-script:
-  - python3 ./nest/test.py
-
 install:
   - conda build ./nest
+
+script:
+  - conda install --use-local nest-simulator
+  - python3 ./nest/test.py
 
 deploy:
   provider: script
