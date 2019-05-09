@@ -15,8 +15,6 @@ matrix:
     - os: linux
       name: "NEST simulator with Python 3.6 on Xenial Linux"
       dist: xenial
-      python: 3.6
-      env: TOXENV=3.6
     - name: "NEST simulator with Python 3.6 on macOS"
       os: osx
       osx_image: xcode10.2  # Python 3.7.2 running on macOS 10.14.3
@@ -31,7 +29,6 @@ before_install:
   - conda config --set always_yes yes --set changeps1 no --set auto_update_conda false
   - conda config --add channels conda-forge
   - conda info -a
-  - conda install -y -c conda-forge python=$TOXENV
   - conda install -y -c conda-forge conda-build conda-verify automake autoconf libtool wget setuptools git
   - if [[ "$TRAVIS_OS_NAME" = "osx" ]]; then conda install -y -c conda-forge clang; fi
   - conda clean -y --all
