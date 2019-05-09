@@ -9,12 +9,11 @@ if [[ $(uname) == Linux ]]; then
 fi
 
 if [[ $(uname) == Darwin ]]; then
-	LLVMPATH = $(brew --prefix llvm)
-	echo 'export PATH="${LLVMPATH}/bin:$PATH"' >> ~/.bash_profile
-	export CC= clang
-	export CXX= $(CC)++
-	export LDFLAGS="-L${LLVMPATH}/lib -Wl,-rpath,${LLVMPATH}/lib"
-	export CPPFLAGS="-I${LLVMPATH}/include -I${LLVMPATH}/include/c++/v1/"
+	echo 'export ${PREFIX}/bin:$PATH"' >> ~/.bash_profile
+	export CC=clang
+	export CXX=${CC}++
+	export LDFLAGS="-L${PREFIX}/lib -Wl,-rpath,${PREFIX}/lib"
+	export CPPFLAGS="-I${PREFIX}/include -I${PREFIX}/include/c++/v1/"
 fi
 
 mkdir build
