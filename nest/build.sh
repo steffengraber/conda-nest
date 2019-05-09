@@ -48,9 +48,10 @@ fi
 make -j${CPU_COUNT}
 make install
 
-# [ -d $PREFIX/lib64] &&
+if  [[ -d $PREFIX/lib64]]; then
+	cp -R $PREFIX/lib64/* $PREFIX/lib
+fi
 
-cp $PREFIX/lib64/* $PREFIX/lib -r
 
 for CHANGE in "activate" "deactivate"
 do
