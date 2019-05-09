@@ -2,6 +2,6 @@
 
 VERSION="2.16.0"
 conda install -y -c anaconda anaconda-client
-PKG_NAME=$(conda --output build nest/ )
+PKG_NAME=$(conda build --output nest/ )
 anaconda -t $c_token upload -v $VERSION --force -u $c_user -l daily -l main
  $PKG_NAME
