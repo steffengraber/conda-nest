@@ -48,8 +48,9 @@ fi
 make -j${CPU_COUNT}
 make install
 
-if  [[ -d $PREFIX/lib64]]; then
-	cp -R $PREFIX/lib64/* $PREFIX/lib
+if [[ -d $PREFIX/lib64 ]]
+then
+    cp -R $PREFIX/lib64/* $PREFIX/lib
 fi
 
 

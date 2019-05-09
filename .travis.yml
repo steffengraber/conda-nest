@@ -37,7 +37,7 @@ before_install:
   - conda clean -y --all
 
 install:
-  - conda build ./nest
+  - conda build nest
 
 script:
   # - conda install --use-local nest-simulator
