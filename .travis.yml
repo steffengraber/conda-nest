@@ -31,7 +31,7 @@ before_install:
   - conda config --set always_yes yes --set changeps1 no --set auto_update_conda false
   - conda info -a
   - conda install -y -c conda-forge python=$TOXENV
-  - conda install -y -c conda-forge conda-build conda-verify automake autoconf libtool wget setuptools; fi
+  - conda install -y -c conda-forge conda-build conda-verify automake autoconf libtool wget setuptools
   - if [[ "$TRAVIS_OS_NAME" = "osx" ]]; then conda install -y -c conda-forge clang; fi
   - conda clean -y --all
 
