@@ -13,8 +13,8 @@ if [[ $(uname) == Darwin ]]; then
 	echo 'export PATH="${LLVMPATH}/bin:$PATH"' >> ~/.bash_profile
 	export CC= clang
 	export CXX= $(CC)++
-	export LDFLAGS= -L${LLVMPATH}/lib -Wl,-rpath,${LLVMPATH}/lib
-	export CPPFLAGS= -I${LLVMPATH}/include -I${LLVMPATH}/include/c++/v1/
+	export LDFLAGS="-L${LLVMPATH}/lib -Wl,-rpath,${LLVMPATH}/lib"
+	export CPPFLAGS="-I${LLVMPATH}/include -I${LLVMPATH}/include/c++/v1/"
 fi
 
 mkdir build
@@ -30,7 +30,7 @@ if [[ $(uname) == Linux ]]; then
 		  -DREADLINE_ROOT_DIR=$PREFIX \
 		  -DLTDL_ROOT_DIR=$PREFIX \
 		  ..
-endif
+fi
 
 # OSX build
 if [[ $(uname) == Darwin ]]; then
@@ -49,7 +49,9 @@ fi
 make -j${CPU_COUNT}
 make install
 
-[ -d $PREFIX/lib64] && cp $PREFIX/lib64/* $PREFIX/lib -r
+# [ -d $PREFIX/lib64] &&
+
+cp $PREFIX/lib64/* $PREFIX/lib -r
 
 for CHANGE in "activate" "deactivate"
 do
