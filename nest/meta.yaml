@@ -21,7 +21,7 @@ requirements:
     - git
     - make
     - sed
-    # - {{ compiler('c') }}
+    - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
     - cython
