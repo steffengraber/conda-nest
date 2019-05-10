@@ -1,4 +1,4 @@
-{% set name = "nest-simulator" %}
+{% set name = "nest" %}
 {% set version = "master" %}
 
 package:
