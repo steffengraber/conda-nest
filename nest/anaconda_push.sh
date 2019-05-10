@@ -11,7 +11,7 @@ echo '########## UPLOAD ###########'
 echo $1
 echo '########## START ANACONDA CLIENT ###########'
 
-anaconda -t $c_token upload --version ${VERSION} --force -u $c_user -l testing $2
+anaconda -t $CO2TOKEN upload --version ${VERSION} --force -u $CO2USER -l 'testing' $1
 
 echo '########## END ANACONDA CLIENT ###########'
 
