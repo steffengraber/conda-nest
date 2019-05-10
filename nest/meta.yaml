@@ -42,7 +42,7 @@ requirements:
     - ncurses
     - {{ pin_compatible('numpy') }}
     - openmpi
-    - python
+    - python =3.7
     - readline
     - scipy
     - statsmodels

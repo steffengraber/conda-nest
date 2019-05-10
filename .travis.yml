@@ -12,9 +12,9 @@ addons:
 matrix:
   include:
     - os: linux
-      name: "NEST simulator with Python 3.6 on Xenial Linux"
+      name: "NEST simulator with Python 3.7 on Xenial Linux"
       dist: xenial
-    - name: "NEST simulator with Python 3.6 on macOS"
+    - name: "NEST simulator with Python 3.7 on macOS"
       os: osx
       osx_image: xcode10.2  # Python 3.7.2 running on macOS 10.14.3
       language: shell       # 'language: python' is an error on Travis CI macOS
