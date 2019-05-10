@@ -26,6 +26,7 @@ requirements:
   host:
     - cython
     - gsl
+    - libtool
     - matplotlib
     - ncurses
     - numpy
@@ -38,6 +39,7 @@ requirements:
   run:
     - cython
     - gsl
+    - libtool
     - matplotlib
     - ncurses
     - {{ pin_compatible('numpy') }}
