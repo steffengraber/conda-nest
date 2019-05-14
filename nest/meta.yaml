@@ -14,10 +14,7 @@ build:
   skip: true  # [win]
   # skip: true  # [osx]
   skip: true  # [py<30]
-  run_exports:
-    - {{ pin_subpackage('libnetcdf') }}
-
-requirements:
+  requirements:
   build:
     - cmake >=3.6
     - git
