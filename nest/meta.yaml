@@ -31,7 +31,7 @@ requirements:
     - ncurses
     - numpy
     - openmpi
-    - python =3.7
+    - python =3.6
     - readline
     - scipy
     - statsmodels
@@ -44,7 +44,7 @@ requirements:
     - ncurses
     - {{ pin_compatible('numpy') }}
     - openmpi
-    - python =3.7
+    - python =3.6
     - readline
     - scipy
     - statsmodels
