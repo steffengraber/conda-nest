@@ -13,7 +13,7 @@ build:
   number: 0
   skip: true  # [win]
   #skip: true  # [osx]
-  #skip: true  # [py<30]
+  skip: true  # [py<30]
 
 requirements:
   build:
@@ -31,7 +31,7 @@ requirements:
     - ncurses
     - numpy
     - openmpi
-    - python =3.6
+    - python
     - readline
     - scipy
     - statsmodels
@@ -46,7 +46,7 @@ requirements:
     - ncurses
     - {{ pin_compatible('numpy') }}
     - openmpi
-    - python =3.6
+    - python
     - readline
     - scipy
     - statsmodels
