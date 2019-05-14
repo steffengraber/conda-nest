@@ -10,6 +10,7 @@ fi
 
 if [[ $(uname) == Darwin ]]; then
 	echo 'export ${PREFIX}/bin:$PATH"' >> ~/.bash_profile
+	export MACOSX_DEPLOYMENT_TARGET=10.8
 	export CC=clang
 	export CXX=${CC}++
 	export LDFLAGS="-L${PREFIX}/lib -Wl,-rpath,${PREFIX}/lib"
