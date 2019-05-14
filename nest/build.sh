@@ -14,6 +14,7 @@ if [[ $(uname) == Darwin ]]; then
 	export CXX=${CC}++
 	export LDFLAGS="-L${PREFIX}/lib -Wl,-rpath,${PREFIX}/lib"
 	export CPPFLAGS="-I${PREFIX}/include -I${PREFIX}/include/c++/v1/"
+	export CFLAGS="${CFLAGS} -i sysroot ${CONDA_BUILD_SYSROOT}"
 fi
 
 mkdir build
@@ -22,6 +23,7 @@ cd build
 # Linux build
 if [[ $(uname) == Linux ]]; then
 	cmake -DCMAKE_INSTALL_PREFIX:PATH=$PREFIX \
+	      -DCMAKE_OSX_SYSROOT=${CONDA_BUILD_SYSROOT} \
 	      -Dwith-optimize=ON \
           -Dwith-warning=ON \
 		  -Dwith-mpi=OFF\
