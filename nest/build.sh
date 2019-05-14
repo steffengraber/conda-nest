@@ -10,8 +10,7 @@ fi
 
 if [[ $(uname) == Darwin ]]; then
 	echo 'export ${PREFIX}/bin:$PATH"' >> ~/.bash_profile
-	# export MACOSX_DEPLOYMENT_TARGET=10.8
-	export CC=${PREFIX}/bin/clang
+	export CC=clang
 	export CXX=${CC}++
 	export LDFLAGS="-L${PREFIX}/lib -Wl,-rpath,${PREFIX}/lib"
 	export CPPFLAGS="-I${PREFIX}/include -I${PREFIX}/include/c++/v1/"
@@ -23,6 +22,8 @@ cd build
 # Linux build
 if [[ $(uname) == Linux ]]; then
 	cmake -DCMAKE_INSTALL_PREFIX:PATH=$PREFIX \
+	      -Dwith-optimize=ON \
+          -Dwith-warning=ON \
 		  -Dwith-mpi=OFF\
 		  -Dwith-openmp=OFF \
 		  -Dwith-python=3 \
@@ -45,9 +46,7 @@ if [[ $(uname) == Darwin ]]; then
 		  -DLTDL_ROOT_DIR=$PREFIX \
 		  ..
 fi
-# -DCMAKE_OSX_SYSROOT=${CONDA_BUILD_SYSROOT} \
-# -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
-# -DCMAKE_MACOSX_RPATH=ON \
+
 
 make -j${CPU_COUNT}
 make install
