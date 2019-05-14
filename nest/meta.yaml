@@ -38,8 +38,6 @@ requirements:
     - zlib
   run:
     - cython
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
     - gsl
     - libtool
     - matplotlib
