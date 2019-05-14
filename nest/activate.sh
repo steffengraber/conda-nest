@@ -11,3 +11,12 @@ export NEST_DATA_DIR=$NEST_DATA_DIR
 export NEST_DOC_DIR=$NEST_DOC_DIR
 export NEST_MODULE_PATH=$NEST_MODULE_PATH
 export NEST_PYTHON_PREFIX=$NEST_PYTHON_PREFIX
+
+
+#if [[ !-e ${HOME}/.matplotlib//matplotlibrc ]]
+#then
+#	mkdir -p ${HOME}/.matplotlib
+#	cat > '${HOME}/.matplotlib/matplotlibrc <<EOF
+#	backend : svg
+#	EOF'
+#fi
