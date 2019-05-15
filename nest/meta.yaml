@@ -27,6 +27,7 @@ requirements:
     - cython
     - gsl
     - libtool
+    - libcblas
     - matplotlib
     - ncurses
     - numpy
@@ -40,6 +41,7 @@ requirements:
     - cython
     - gsl
     - libtool
+    - libcblas
     - matplotlib
     - ncurses
     - {{ pin_compatible('numpy') }}
