@@ -21,26 +21,28 @@ cd build
 
 # Linux build
 if [[ $(uname) == Linux ]]; then
-	cmake -DCMAKE_INSTALL_PREFIX:PATH=$PREFIX \
+	cmake -DCMAKE_INSTALL_PREFIX:PATH=${PREFIX} \
 		  -Dwith-mpi=OFF\
 		  -Dwith-openmp=OFF \
 		  -Dwith-python=3 \
-		  -Dwith-gsl=$PREFIX \
-		  -DREADLINE_ROOT_DIR=$PREFIX \
-		  -DLTDL_ROOT_DIR=$PREFIX \
+		  -Dwith-gsl=${PREFIX} \
+		  -DREADLINE_ROOT_DIR=${PREFIX} \
+		  -DLTDL_ROOT_DIR=${PREFIX} \
 		  ..
 fi
 
 # OSX build
 if [[ $(uname) == Darwin ]]; then
-	cmake -DCMAKE_INSTALL_PREFIX:PATH=$PREFIX \
+	cmake -DCMAKE_INSTALL_PREFIX:PATH=${PREFIX} \
 		  -DCMAKE_OSX_SYSROOT=${CONDA_BUILD_SYSROOT} \
-		  -Dwith-mpi=OFF \
+		   -Dwith-mpi=OFF \
 		  -Dwith-openmp=OFF \
 		  -Dwith-python=3 \
-		  -Dwith-gsl=$PREFIX \
-		  -DREADLINE_ROOT_DIR=$PREFIX \
-		  -DLTDL_ROOT_DIR=$PREFIX \
+		  -DPYTHON_EXECUTABLE=${PYTHON}\
+		  -DPYTHON_LIBRARY=${PREFIX}/lib/libpython${PY_VER}.dylib \
+		  -Dwith-gsl=${PREFIX} \
+		  -DREADLINE_ROOT_DIR=${PREFIX} \
+		  -DLTDL_ROOT_DIR=${PREFIX} \
 		  ..
 fi
 
@@ -48,9 +50,9 @@ fi
 make -j${CPU_COUNT}
 make install
 
-if [[ -d $PREFIX/lib64 ]]
+if [[ -d ${PREFIX}/lib64 ]]
 then
-    cp -R $PREFIX/lib64/* $PREFIX/lib
+    cp -R ${PREFIX}/lib64/* ${PREFIX}/lib
 fi
 
 
