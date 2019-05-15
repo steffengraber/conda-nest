@@ -35,7 +35,7 @@ fi
 if [[ $(uname) == Darwin ]]; then
 	cmake -DCMAKE_INSTALL_PREFIX:PATH=${PREFIX} \
 		  -DCMAKE_OSX_SYSROOT=${CONDA_BUILD_SYSROOT} \
-		   -Dwith-mpi=OFF \
+		  -Dwith-mpi=OFF \
 		  -Dwith-openmp=OFF \
 		  -Dwith-python=3 \
 		  -DPYTHON_EXECUTABLE=${PYTHON}\
