@@ -14,10 +14,11 @@ build:
   skip: true  # [win]
   #skip: true  # [osx]
   #skip: true  # [py<30]
+  osx_is_app: True
 
 requirements:
+
   build:
-    osx_is_app: True
     - cmake >=3.6
     - git
     - make
