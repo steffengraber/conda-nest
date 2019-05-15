@@ -17,6 +17,7 @@ build:
 
 requirements:
   build:
+    osx_is_app: True
     - cmake >=3.6
     - git
     - make
@@ -47,7 +48,6 @@ requirements:
     - {{ pin_compatible('numpy') }}
     - openmpi
     - python =3.7
-    - python.app
     - readline
     - scipy
     - statsmodels
