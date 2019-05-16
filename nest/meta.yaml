@@ -12,8 +12,8 @@ source:
 build:
   number: 0
   skip: true  # [win]
-  #skip: true  # [osx]
-  skip: true  # [py<37]
+  # skip: true  # [osx]
+  # skip: true  # [py<30]
   osx_is_app: True
 
 requirements:
@@ -49,6 +49,7 @@ requirements:
     - {{ pin_compatible('numpy') }}
     - openmpi
     - python =3.7
+    - python.app # [osx]
     - readline
     - scipy
     - statsmodels
