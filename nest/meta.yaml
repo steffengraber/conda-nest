@@ -13,7 +13,7 @@ build:
   number: 0
   skip: true  # [win]
   #skip: true  # [osx]
-  #skip: true  # [py<30]
+  skip: true  # [py<37]
   osx_is_app: True
 
 requirements:
