@@ -33,6 +33,7 @@ before_install:
   - conda clean -y --all
 
 install:
+  - echo "INSTALL NOW"
   - conda build nest
 
 script:

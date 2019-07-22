@@ -12,12 +12,14 @@ source:
 build:
   number: 0
   skip: true  # [win]
-  skip: true  # [py<30]
   # skip: true  # [osx]
   # skip: true  # [py<30]
   osx_is_app: True
 
 requirements:
+  channels:
+    - conda-forge
+    - defaults
   build:
     - cmake >=3.6
     - git
@@ -39,7 +41,7 @@ requirements:
     - {{ mpi }}
     - mpi4py
     - openmp
-    - python
+    - python =3.5
     - readline
     - scipy
     - openssh
@@ -57,7 +59,7 @@ requirements:
     - {{ mpi }}
     - mpi4py
     - openmp
-    - python
+    - python =3.5
     - python.app  # [osx]
     - readline
     - scipy
