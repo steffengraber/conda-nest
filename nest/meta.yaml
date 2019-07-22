@@ -1,5 +1,5 @@
 {% set name = "nest" %}
-{% set version = "fix-macos-jupyter" %}
+{% set version = "fixmacosjupyter" %}
 
 package:
   name: {{ name|lower }}
