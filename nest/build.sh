@@ -22,8 +22,8 @@ cd build
 # Linux build
 if [[ $(uname) == Linux ]]; then
 	cmake -DCMAKE_INSTALL_PREFIX:PATH=${PREFIX} \
-		  -Dwith-mpi=ON\
-		  -Dwith-openmp=ON \
+		  -Dwith-mpi=OFF\
+		  -Dwith-openmp=OFF \
 		  -Dwith-python=3 \
 		  -Dwith-gsl=${PREFIX} \
 		  -DREADLINE_ROOT_DIR=${PREFIX} \
@@ -35,8 +35,8 @@ fi
 if [[ $(uname) == Darwin ]]; then
 	cmake -DCMAKE_INSTALL_PREFIX:PATH=${PREFIX} \
 		  -DCMAKE_OSX_SYSROOT=${CONDA_BUILD_SYSROOT} \
-		  -Dwith-mpi=ON \
-		  -Dwith-openmp=ON \
+		  -Dwith-mpi=OFF \
+		  -Dwith-openmp=OFF \
 		  -Dwith-python=3 \
 		  -DPYTHON_EXECUTABLE=${PYTHON}\
 		  -DPYTHON_LIBRARY=${PREFIX}/lib/libpython${PY_VER}.dylib \

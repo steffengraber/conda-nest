@@ -25,7 +25,6 @@ requirements:
     - git
     - llvm-openmp  # [osx]
     - make
-    - openmp
     - sed
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
@@ -38,10 +37,7 @@ requirements:
     - matplotlib
     - {{ pin_compatible('ncurses') }}
     - {{ pin_compatible('numpy') }}
-    - {{ mpi }}
-    - mpi4py
-    - openmp
-    - python =3.5
+    - python =3.6
     - readline
     - scipy
     - openssh
@@ -56,10 +52,7 @@ requirements:
     - matplotlib
     - {{ pin_compatible('ncurses') }}
     - {{ pin_compatible('numpy') }}
-    - {{ mpi }}
-    - mpi4py
-    - openmp
-    - python =3.5
+    - python =3.6
     - python.app  # [osx]
     - readline
     - scipy
