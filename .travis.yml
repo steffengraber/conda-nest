@@ -1,4 +1,4 @@
-language: ruby
+language: python
 
 sudo: required
 
@@ -14,10 +14,12 @@ matrix:
     - os: linux
       name: "NEST simulator with Python 3.7 on Xenial Linux"
       dist: xenial
+      python: 3.6
     - name: "NEST simulator with Python 3.7 on macOS"
       os: osx
       osx_image: xcode10.2  # Python 3.7.2 running on macOS 10.14.3
       language: shell       # 'language: python' is an error on Travis CI macOS
+      python: 3.6
 
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then MINICONDA_OS=Linux; else MINICONDA_OS=MacOSX; fi
@@ -27,14 +29,17 @@ before_install:
   - source "$HOME"/miniconda/etc/profile.d/conda.sh
   - conda config --set always_yes yes --set changeps1 no --set auto_update_conda false
   - conda config --add channels conda-forge
+  - conda update --yes conda
   - conda info -a
+  - conda create --yes -n test python=$TRAVIS_PYTHON_VERSION
+  - source activate test
   - conda install -y -c conda-forge conda-build conda-verify automake autoconf libtool wget setuptools git
   - if [[ "$TRAVIS_OS_NAME" = "osx" ]]; then conda install -y -c conda-forge clang llvm; fi
   - conda clean -y --all
 
 install:
   - echo "INSTALL NOW"
-  - conda build nest
+  - conda build --python=$TRAVIS_PYTHON_VERSION nest
 
 script:
   # - conda install --use-local nest-simulator
