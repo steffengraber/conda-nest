@@ -33,7 +33,7 @@ before_install:
   - conda create --yes -n test python=$TRAVIS_PYTHON_VERSION
   - source activate test
   - conda install -y -c anaconda conda-build conda-verify automake autoconf libtool wget setuptools git
-  - if [[ "$TRAVIS_OS_NAME" = "osx" ]]; then conda install -y -c anaconda clang llvm; fi
+  - if [[ "$TRAVIS_OS_NAME" = "osx" ]]; then conda install -y -c anaconda clang llvm ld64; fi
   - conda clean -y --all
 
 install:
