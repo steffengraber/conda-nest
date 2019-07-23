@@ -12,6 +12,8 @@ if [[ $(uname) == Darwin ]]; then
 	echo 'export ${PREFIX}/bin:$PATH"' >> ~/.bash_profile
 	export CC=clang
 	export CXX=${CC}++
+	echo "HIER"
+	echo $PREFIX
 	export LDFLAGS="-L${PREFIX}/lib -Wl,-rpath,${PREFIX}/lib"
 	export CPPFLAGS="-I${PREFIX}/include -I${PREFIX}/include/c++/v1/"
 fi
