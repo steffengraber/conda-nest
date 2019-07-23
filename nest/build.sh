@@ -12,8 +12,6 @@ if [[ $(uname) == Darwin ]]; then
 	echo 'export ${PREFIX}/bin:$PATH"' >> ~/.bash_profile
 	export CC=clang
 	export CXX=${CC}++
-	echo "HIER"
-	echo ${CONDA_PREFIX}
 	export LDFLAGS="-L${CONDA_PREFIX}/lib -Wl,-rpath,$${CONDA_PREFIX}/lib"
 	export CPPFLAGS="-I${CONDA_PREFIX}/include -I${CONDA_PREFIX}/include/c++/v1/"
 fi
@@ -35,9 +33,10 @@ fi
 
 # OSX build
 if [[ $(uname) == Darwin ]]; then
+    echo "Start cmake now:"
 	cmake -DCMAKE_INSTALL_PREFIX:PATH=${CONDA_PREFIX}\
-		  -DCMAKE_OSX_SYSROOT=${CONDA_BUILD_SYSROOT} \
-		  -Dwith-mpi=OFF \
+	      -DCMAKE_CXX_FLAGS="-std=c++11 -stdlib=libc++" \
+ 		  -Dwith-mpi=OFF \
 		  -Dwith-openmp=OFF \
 		  -Dwith-python=3 \
 		  -DPYTHON_EXECUTABLE=${PYTHON}\
