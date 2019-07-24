@@ -9,7 +9,7 @@ if [[ $(uname) == Linux ]]; then
 fi
 
 if [[ $(uname) == Darwin ]]; then
-	export CC=clang
+	export CC=${CONDA_PREFIX}/bin/clang
 	export CXX=${CC}++
 	echo 'export ${PREFIX}/bin:$PATH"' >> ~/.bash_profile
 	export LDFLAGS="-L${CONDA_PREFIX}/lib -Wl,-rpath,${CONDA_PREFIX}/lib"
