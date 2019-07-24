@@ -4,16 +4,16 @@ export MPI_FLAGS=--allow-run-as-root
 
 if [[ $(uname) == Linux ]]; then
     export MPI_FLAGS="$MPI_FLAGS;-mca;plm;isolated"
-	export CFLAGS="-I${CONDA_PREFIX}/include"
-	export LDFLAGS="-L${CONDA_PREFIX}/lib"
+	export CFLAGS="-I${BUILD_PREFIX}/include"
+	export LDFLAGS="-L${BUILD_PREFIX}/lib"
 fi
 
 if [[ $(uname) == Darwin ]]; then
-	export CC=${CONDA_PREFIX}/bin/clang
+	export CC=${BUILD_PREFIX}/bin/clang
 	export CXX=${CC}++
 	echo 'export ${PREFIX}/bin:$PATH"' >> ~/.bash_profile
-	export LDFLAGS="-L${CONDA_PREFIX}/lib -Wl,-rpath,${CONDA_PREFIX}/lib"
-	export CPPFLAGS="-I${CONDA_PREFIX}/include -I${CONDA_PREFIX}/include/c++/v1/"
+	export LDFLAGS="-L${BUILD_PREFIX}/lib -Wl,-rpath,${BUILD_PREFIX}/lib"
+	export CPPFLAGS="-I${BUILD_PREFIX}/include -I${BUILD_PREFIX}/include/c++/v1/"
 fi
 
 mkdir build
@@ -33,16 +33,15 @@ fi
 
 # OSX build
 if [[ $(uname) == Darwin ]]; then
-	cmake -DCMAKE_INSTALL_PREFIX:PATH=${CONDA_PREFIX} \
-		  -DCMAKE_OSX_SYSROOT=${CONDA_BUILD_SYSROOT} \
+	cmake -DCMAKE_INSTALL_PREFIX:PATH=${BUILD_PREFIX} \
 		  -Dwith-mpi=OFF \
 		  -Dwith-openmp=OFF \
 		  -Dwith-python=3 \
 		  -DPYTHON_EXECUTABLE=${PYTHON}\
-		  -DPYTHON_LIBRARY=${CONDA_PREFIX}/lib/libpython${PY_VER}.dylib \
-		  -Dwith-gsl=${CONDA_PREFIX} \
-		  -DREADLINE_ROOT_DIR=${CONDA_PREFIX} \
-		  -DLTDL_ROOT_DIR=${CONDA_PREFIX} \
+		  -DPYTHON_LIBRARY=${BUILD_PREFIX}/lib/libpython${PY_VER}.dylib \
+		  -Dwith-gsl=${BUILD_PREFIX} \
+		  -DREADLINE_ROOT_DIR=${BUILD_PREFIX} \
+		  -DLTDL_ROOT_DIR=${BUILD_PREFIX} \
 		  ..
 fi
 
