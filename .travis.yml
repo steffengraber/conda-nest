@@ -11,10 +11,10 @@ addons:
 
 matrix:
   include:
-    - os: linux
-      name: "NEST simulator with Python 3.7 on Xenial Linux"
-      dist: xenial
-      python: 3.6
+    #- os: linux
+    #  name: "NEST simulator with Python 3.7 on Xenial Linux"
+    #  dist: xenial
+    #  python: 3.6
     - name: "NEST simulator with Python 3.7 on macOS"
       os: osx
       osx_image: xcode11.0  # Python 3.7.2 running on macOS 10.14.3
