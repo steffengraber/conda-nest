@@ -12,8 +12,8 @@ if [[ $(uname) == Darwin ]]; then
 	export CC=clang
 	export CXX=${CC}++
 	echo 'export ${PREFIX}/bin:$PATH"' >> ~/.bash_profile
-	export LDFLAGS="-L${PREFIX}/lib -Wl,-rpath,${PREFIX}/lib"
-	export CPPFLAGS="-I${PREFIX}/include -I${PREFIX}/include/c++/v1/"
+	export LDFLAGS="-L${CONDA_PREFIX}/lib -Wl,-rpath,${CONDA_PREFIX}/lib"
+	export CPPFLAGS="-I${CONDA_PREFIX}/include -I${CONDA_PREFIX}/include/c++/v1/"
 fi
 
 mkdir build
@@ -33,16 +33,16 @@ fi
 
 # OSX build
 if [[ $(uname) == Darwin ]]; then
-	cmake -DCMAKE_INSTALL_PREFIX:PATH=${PREFIX} \
+	cmake -DCMAKE_INSTALL_PREFIX:PATH=${CONDA_PREFIX} \
 		  -DCMAKE_OSX_SYSROOT=${CONDA_BUILD_SYSROOT} \
 		  -Dwith-mpi=OFF \
 		  -Dwith-openmp=OFF \
 		  -Dwith-python=3 \
 		  -DPYTHON_EXECUTABLE=${PYTHON}\
-		  -DPYTHON_LIBRARY=${PREFIX}/lib/libpython${PY_VER}.dylib \
-		  -Dwith-gsl=${PREFIX} \
-		  -DREADLINE_ROOT_DIR=${PREFIX} \
-		  -DLTDL_ROOT_DIR=${PREFIX} \
+		  -DPYTHON_LIBRARY=${CONDA_PREFIX}/lib/libpython${PY_VER}.dylib \
+		  -Dwith-gsl=${CONDA_PREFIX} \
+		  -DREADLINE_ROOT_DIR=${CONDA_PREFIX} \
+		  -DLTDL_ROOT_DIR=${CONDA_PREFIX} \
 		  ..
 fi
 
