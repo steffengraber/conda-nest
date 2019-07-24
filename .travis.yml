@@ -17,7 +17,7 @@ matrix:
       python: 3.6
     - name: "NEST simulator with Python 3.7 on macOS"
       os: osx
-      osx_image: xcode10.2  # Python 3.7.2 running on macOS 10.14.3
+      osx_image: xcode11.0  # Python 3.7.2 running on macOS 10.14.3
       language: shell       # 'language: python' is an error on Travis CI macOS
 
 before_install:
@@ -30,7 +30,7 @@ before_install:
   - conda config --add channels conda-forge
   - conda update --yes conda
   - conda info -a
-  - conda create --yes -n test python=$TRAVIS_PYTHON_VERSION
+  - conda create --yes -n test
   - source activate test
   - conda install -y -c anaconda conda-build conda-verify automake autoconf libtool wget setuptools git
   - if [[ "$TRAVIS_OS_NAME" = "osx" ]]; then conda install -y -c anaconda clang llvm; fi
