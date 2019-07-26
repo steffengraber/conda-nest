@@ -19,6 +19,7 @@ build:
 requirements:
   channels:
     - conda-forge
+    - anaconda
     - defaults
   build:
     - cmake >=3.6
