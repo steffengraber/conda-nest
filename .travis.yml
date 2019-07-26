@@ -7,7 +7,6 @@ addons:
     packages:
       - wget
       - bzip2
-      - cmake
 
 matrix:
   include:
@@ -30,10 +29,11 @@ before_install:
   - conda config --add channels conda-forge
   - conda update --yes conda
   - conda info -a
-  - conda create --yes -n test
-  - source activate test
-  - conda install -y -c anaconda conda-build conda-verify automake autoconf libtool wget setuptools git system
-  - if [[ "$TRAVIS_OS_NAME" = "osx" ]]; then conda install -y -c anaconda clang_osx-64 clangxx_osx-64 llvm; fi
+  # - conda create --yes -n test
+  # - source activate test
+  - conda install -y -c anaconda conda-build conda-verify automake cmake autoconf libtool wget setuptools git
+  - if [[ "$TRAVIS_OS_NAME" = "osx" ]]; then conda install -y -c anaconda gcc_linux-64 gxx_linux-64; fi
+  - if [[ "$TRAVIS_OS_NAME" = "osx" ]]; then conda install -y -c anaconda clang_osx-64 clangxx_osx-64 llvm llvm-openmp; fi
   - conda clean -y --all
 
 install:
