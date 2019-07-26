@@ -3,8 +3,10 @@
 export MPI_FLAGS=--allow-run-as-root
 
 if [[ $(uname) == Linux ]]; then
-    export MPI_FLAGS="$MPI_FLAGS;-mca;plm;isolated"
-	export CFLAGS="-I${BUILD_PREFIX}/include"
+  export MPI_FLAGS="$MPI_FLAGS;-mca;plm;isolated"
+	export CFLAGS="${CFLAGS} -i sysroot ${CONDA_BUILD_SYSROOT}"
+	export CXXFLAGS="${CFLAGS} -i sysroot ${CONDA_BUILD_SYSROOT}"
+	#export CFLAGS="-I${BUILD_PREFIX}/include"
 	export LDFLAGS="-L${BUILD_PREFIX}/lib"
 fi
 
