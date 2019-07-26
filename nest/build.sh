@@ -4,9 +4,7 @@ export MPI_FLAGS=--allow-run-as-root
 
 if [[ $(uname) == Linux ]]; then
   export MPI_FLAGS="$MPI_FLAGS;-mca;plm;isolated"
-	export CFLAGS="${CFLAGS} -i sysroot ${CONDA_BUILD_SYSROOT}"
-	export CXXFLAGS="${CFLAGS} -i sysroot ${CONDA_BUILD_SYSROOT}"
-	#export CFLAGS="-I${BUILD_PREFIX}/include"
+	export CFLAGS="-I${BUILD_PREFIX}/include"
 	export LDFLAGS="-L${BUILD_PREFIX}/lib"
 fi
 
@@ -14,6 +12,8 @@ if [[ $(uname) == Darwin ]]; then
 	export CC=clang
 	export CXX=${CC}++
 	echo 'export ${PREFIX}/bin:$PATH"' >> ~/.bash_profile
+	export CFLAGS="${CFLAGS} -i sysroot ${CONDA_BUILD_SYSROOT}"
+	export CXXFLAGS="${CFLAGS} -i sysroot ${CONDA_BUILD_SYSROOT}"
 	export LDFLAGS="-L${BUILD_PREFIX}/lib -Wl,-rpath,${BUILD_PREFIX}/lib"
 	export CPPFLAGS="-I${BUILD_PREFIX}/include -I${BUILD_PREFIX}/include/c++/v1/"
 fi
