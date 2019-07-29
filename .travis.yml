@@ -25,9 +25,10 @@ before_install:
   - bash miniconda.sh -b -p "$HOME"/miniconda
   - export PATH="$HOME/miniconda/bin:$PATH"
   - source "$HOME"/miniconda/etc/profile.d/conda.sh
-  - conda config --set always_yes yes --set changeps1 no --set auto_update_conda false
+  - hash -r
+  - conda config --set always_yes yes --set changeps1 no
+  - conda update -q conda
   - conda config --add channels conda-forge
-  - conda update --yes conda
   - conda info -a
   # - conda create --yes -n test
   # - source activate test
@@ -36,10 +37,13 @@ before_install:
   #- if [[ "$TRAVIS_OS_NAME" = "osx" ]]; then conda install -y -c anaconda clang_osx-64 clangxx_osx-64 llvm
   #- llvm-openmp; fi
   - conda clean -y --all
-
-install:
   - echo "INSTALL NOW"
   - conda build nest
+  - conda install nest --use-local
+
+install:
+  - nest --help
+  - sli --helpt
 
 script:
   # - conda install --use-local nest-simulator
