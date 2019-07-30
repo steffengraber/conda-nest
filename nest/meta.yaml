@@ -29,7 +29,7 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - llvm
-    - llvm-dev
+    - llvmdev
   host:
     - cython
     - gsl
