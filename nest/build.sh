@@ -11,7 +11,7 @@ fi
 if [[ $(uname) == Darwin ]]; then
   echo "FALGS FOR DARWIN"
 	export CC=clang
-	export CXX=${CC}++
+	export CXX=${CC}
 	echo 'export ${PREFIX}/bin:$PATH"' >> ~/.bash_profile
 	export CFLAGS="${CFLAGS} -i sysroot ${CONDA_BUILD_SYSROOT}"
 	export CXXFLAGS="${CFLAGS} -i sysroot ${CONDA_BUILD_SYSROOT}"
