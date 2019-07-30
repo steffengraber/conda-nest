@@ -8,7 +8,7 @@ addons:
     packages:
       - wget
       - bzip2
-      - g++-8
+      - g++
       - clang
       - llvm
       - llvm-dev

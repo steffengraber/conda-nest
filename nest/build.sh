@@ -38,7 +38,6 @@ fi
 if [[ $(uname) == Darwin ]]; then
   echo "BUILD FOR DARWIN"
 	cmake -DCMAKE_INSTALL_PREFIX:PATH=${BUILD_PREFIX} \
-		  -DCMAKE_OSX_DEPLOYMENT_TARGET=10.7 \
 	    -DCMAKE_CXX_FLAGS=-stdlib=libc++ \
 		  -Dwith-mpi=OFF \
 		  -Dwith-openmp=OFF \
