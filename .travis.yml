@@ -38,11 +38,12 @@ before_install:
   # - conda create --yes -n test
   # - source activate test
   - conda install -y -c anaconda conda-build conda-verify automake autoconf libtool wget setuptools git
-  #- if [[ "$TRAVIS_OS_NAME" = "linux" ]]; then conda install -y -c anaconda gcc_linux-64 gxx_linux-64; fi
-  #- if [[ "$TRAVIS_OS_NAME" = "osx" ]]; then conda install -y -c anaconda clang_osx-64 clangxx_osx-64 llvm
-  #- llvm-openmp; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew --version; brew update; brew tap brewsci/science; brew tap brewsci/bio; brew install coreutils; fi
-
+  # - if [[ "$TRAVIS_OS_NAME" = "linux" ]]; then conda install -y -c anaconda gcc_linux-64 gxx_linux-64; fi
+  # - if [[ "$TRAVIS_OS_NAME" = "osx" ]]; then conda install -y -c anaconda clang_osx-64 clangxx_osx-64 llvm
+  # - llvm-openmp; fi
+  # - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew --version; brew update; brew tap brewsci/science; brew tap
+  # - brewsci/bio; brew install coreutils; fi
+  # - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew --version; brew install coreutils; fi
   - conda clean -y --all
   - echo "INSTALL NOW"
   - conda build nest
