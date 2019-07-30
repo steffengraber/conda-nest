@@ -9,8 +9,9 @@ if [[ $(uname) == Linux ]]; then
 fi
 
 if [[ $(uname) == Darwin ]]; then
-	export CC=clang
-	export CXX=${CC}++
+  echo "FLAGS FOR DARWIN"
+	export CC=clang-7
+	export CXX=clang++-7
 	echo 'export ${PREFIX}/bin:$PATH"' >> ~/.bash_profile
 	export CFLAGS="${CFLAGS} -i sysroot ${CONDA_BUILD_SYSROOT}"
 	export CXXFLAGS="${CFLAGS} -i sysroot ${CONDA_BUILD_SYSROOT}"
@@ -34,6 +35,7 @@ if [[ $(uname) == Linux ]]; then
 fi
 
 # OSX build
+echo "BUILD FOR DARWIN"
 if [[ $(uname) == Darwin ]]; then
 	cmake -DCMAKE_INSTALL_PREFIX:PATH=${BUILD_PREFIX} \
 		  -Dwith-mpi=OFF \
