@@ -22,12 +22,14 @@ requirements:
     - anaconda
     - defaults
   build:
-    # - cmake >=3.6
+    - cmake
     - git
-    # - make
+    - make
     - sed
-    # - {{ compiler('c') }}
-    # - {{ compiler('cxx') }}
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - llvm
+    - llvm-dev
   host:
     - cython
     - gsl

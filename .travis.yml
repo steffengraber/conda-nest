@@ -8,10 +8,10 @@ addons:
     packages:
       - wget
       - bzip2
-      - g++
-      - clang
-      - llvm
-      - llvm-dev
+      # - g++
+      # - clang
+      # - llvm
+      # - llvm-dev
 
 matrix:
   include:
