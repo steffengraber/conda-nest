@@ -11,7 +11,7 @@ fi
 if [[ $(uname) == Darwin ]]; then
   echo "FALGS FOR DARWIN"
 	export CC=clang
-	export CXX=${CC}
+	export CXX=${CC}++
 	echo 'export ${PREFIX}/bin:$PATH"' >> ~/.bash_profile
 	export CFLAGS="${CFLAGS} -i sysroot ${CONDA_BUILD_SYSROOT}"
 	export CXXFLAGS="${CFLAGS} -i sysroot ${CONDA_BUILD_SYSROOT}"
@@ -25,7 +25,7 @@ cd build
 # Linux build
 if [[ $(uname) == Linux ]]; then
 	cmake -DCMAKE_INSTALL_PREFIX:PATH=${PREFIX} \
-		  -Dwith-mpi=OFF\
+	    -Dwith-mpi=OFF\
 		  -Dwith-openmp=OFF \
 		  -Dwith-python=3 \
 		  -Dwith-gsl=${PREFIX} \
@@ -38,6 +38,8 @@ fi
 if [[ $(uname) == Darwin ]]; then
   echo "BUILD FOR DARWIN"
 	cmake -DCMAKE_INSTALL_PREFIX:PATH=${BUILD_PREFIX} \
+		  -DCMAKE_OSX_DEPLOYMENT_TARGET=10.7 \
+	    -DCMAKE_CXX_FLAGS=-stdlib=libc++ \
 		  -Dwith-mpi=OFF \
 		  -Dwith-openmp=OFF \
 		  -Dwith-python=3 \
