@@ -10,8 +10,8 @@ fi
 
 if [[ $(uname) == Darwin ]]; then
   echo "FALGS FOR DARWIN"
-	export CC=CC=x86_64-apple-darwin13.4.0-clang
-	export CXX=x86_64-apple-darwin13.4.0-clang++
+	export CC=clang
+	export CXX=clang++
 	echo 'export ${PREFIX}/bin:$PATH"' >> ~/.bash_profile
 	#export CFLAGS="${CFLAGS} -i sysroot ${PREFIX}"
 	#export CXXFLAGS="${CFLAGS} -i sysroot ${PREFIX}"
