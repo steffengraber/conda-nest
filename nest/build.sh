@@ -8,16 +8,16 @@ if [[ $(uname) == Linux ]]; then
 	export LDFLAGS="-L${PREFIX}/lib"
 fi
 
-if [[ $(uname) == Darwin ]]; then
-  echo "FALGS FOR DARWIN"
-	export CC=clang
-	export CXX=clang++
-	echo 'export ${PREFIX}/bin:$PATH"' >> ~/.bash_profile
-	#export CFLAGS="${CFLAGS} -i sysroot ${PREFIX}"
-	#export CXXFLAGS="${CFLAGS} -i sysroot ${PREFIX}"
-	export LDFLAGS="-L${PREFIX}/lib -Wl,-rpath,${PREFIX}/lib"
-	export CPPFLAGS="-I${PREFIX}/include -I${PREFIX}/include/c++/v1/"
-fi
+#if [[ $(uname) == Darwin ]]; then
+#  echo "FALGS FOR DARWIN"
+#	# export CC=clang
+#	# export CXX=x86_64-apple-darwin13.4.0-clang++
+#	echo 'export ${PREFIX}/bin:$PATH"' >> ~/.bash_profile
+#	#export CFLAGS="${CFLAGS} -i sysroot ${PREFIX}"
+#	#export CXXFLAGS="${CFLAGS} -i sysroot ${PREFIX}"
+#	export LDFLAGS="-L${PREFIX}/lib -Wl,-rpath,${PREFIX}/lib"
+#	export CPPFLAGS="-I${PREFIX}/include -I${PREFIX}/include/c++/v1/"
+#fi
 
 mkdir build
 cd build
