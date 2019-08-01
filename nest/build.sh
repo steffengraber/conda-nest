@@ -4,19 +4,19 @@ export MPI_FLAGS=--allow-run-as-root
 
 if [[ $(uname) == Linux ]]; then
   export MPI_FLAGS="$MPI_FLAGS;-mca;plm;isolated"
-	export CFLAGS="-I${BUILD_PREFIX}/include"
-	export LDFLAGS="-L${BUILD_PREFIX}/lib"
+	export CFLAGS="-I${PREFIX}/include"
+	export LDFLAGS="-L${PREFIX}/lib"
 fi
 
 if [[ $(uname) == Darwin ]]; then
   echo "FALGS FOR DARWIN"
-	export CC=clang
-	export CXX=${CC}++
+	export CC=CC=x86_64-apple-darwin13.4.0-clang
+	export CXX=x86_64-apple-darwin13.4.0-clang++
 	echo 'export ${PREFIX}/bin:$PATH"' >> ~/.bash_profile
-	export CFLAGS="${CFLAGS} -i sysroot ${CONDA_BUILD_SYSROOT}"
-	export CXXFLAGS="${CFLAGS} -i sysroot ${CONDA_BUILD_SYSROOT}"
-	export LDFLAGS="-L${BUILD_PREFIX}/lib -Wl,-rpath,${BUILD_PREFIX}/lib"
-	export CPPFLAGS="-I${BUILD_PREFIX}/include -I${BUILD_PREFIX}/include/c++/v1/"
+	#export CFLAGS="${CFLAGS} -i sysroot ${PREFIX}"
+	#export CXXFLAGS="${CFLAGS} -i sysroot ${PREFIX}"
+	export LDFLAGS="-L${PREFIX}/lib -Wl,-rpath,${PREFIX}/lib"
+	export CPPFLAGS="-I${PREFIX}/include -I${PREFIX}/include/c++/v1/"
 fi
 
 mkdir build

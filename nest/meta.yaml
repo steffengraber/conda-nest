@@ -18,7 +18,7 @@ build:
 
 requirements:
   channels:
-    # - conda-forge
+    - conda-forge
     - anaconda
     - defaults
   build:
@@ -26,21 +26,39 @@ requirements:
     - git
     - make
     - sed
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
+    - clang
+    - clang_osx-64
+    - clangxx
+    - clangxx_osx-64
     - llvm
-    - llvmdev
+    - llvm-lto-tapi
+    - llvm-openmp
   host:
+    - ca-certificates
+    - cctools
+    - compiler-rt
     - cython
     - gsl
     - {{ pin_compatible('libcblas') }}
     - libtool
+    - libcxx
+    - libcxxabi
+    - libedit
+    - libffi
+    - libssh2
+    - libuv
     - matplotlib
+    - libiconv
     - {{ pin_compatible('ncurses') }}
     - {{ pin_compatible('numpy') }}
+    - openssl
+    - perl
     - python =3.7
+    - rhash
     - readline
     - scipy
+    - tk
+    - xz
     - openssh
     - statsmodels
     - zlib
