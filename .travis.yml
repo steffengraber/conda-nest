@@ -48,13 +48,13 @@ before_install:
   - echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
   - echo "+         P R E P A R E   N E S T   B U I L D   E N V I R O N M E N T         +"
   - echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
-  - echo ${MATRIX_EVAL}
-  - eval "${MATRIX_EVAL}"
+  # - echo ${MATRIX_EVAL}
+  # - eval "${MATRIX_EVAL}"
   - export SOURCEDIR=$PWD
   - echo $PWD
   - ls $PWD
   # - cp extras/install_music.sh extras/install_csa-libneurosim.sh $HOME
-  - cd $HOME/build
+  # - cd $HOME/build
   - echo $PATH
   # Upgrade pip and setuptools
   - if [[ $TRAVIS_BUILD_STAGE_NAME == "Gcc8clang7" ]]; then pyenv global 3.6.3; fi
