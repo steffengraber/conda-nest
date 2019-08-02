@@ -7,6 +7,8 @@ mkdir install
 
 git clone  https://github.com/nest/nest-simulator.git
 
+ls -l
+
 cd build
 export CC=clang
 export CXX=clang++
