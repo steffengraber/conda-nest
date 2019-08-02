@@ -105,7 +105,7 @@ before_install:
 install:
   - chmod +x ./nest/travis_build.sh
   - ./nest/travis_build.sh
-  # - nest --help
+  - nest --help
   # - sli --helpt
 
 script:
