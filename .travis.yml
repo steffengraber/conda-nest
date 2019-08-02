@@ -102,8 +102,8 @@ before_install:
   - echo "BEFORE INSTALL END"
 
 install:
-  - chmod +x nest/travis_build.sh
-  - ./extras/travis_build.sh
+  - chmod +x ./nest/travis_build.sh
+  - ./nest/travis_build.sh
   # - nest --help
   # - sli --helpt
 
