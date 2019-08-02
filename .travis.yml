@@ -99,6 +99,7 @@ before_install:
   - cmake --version
   - echo ${CC}
   - echo ${CXX}
+  - ls -l
   - echo "BEFORE INSTALL END"
 
 install:
