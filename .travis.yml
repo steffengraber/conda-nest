@@ -109,7 +109,7 @@ install:
   # - sli --help
   - ls -l
   - ls -l install/
-  - la -l nest/
+  - ls -l nest/
 
 script:
   # - conda install --use-local nest-simulator
