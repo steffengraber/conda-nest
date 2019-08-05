@@ -13,9 +13,14 @@ ls -l
 
 cd build
 
+export CFLAGS="${CFLAGS} -i sysroot ${CONDA_BUILD_SYSROOT}"
+export CXXFLAGS="${CFLAGS}
+
+
 echo 'export ${PREFIX}/bin:$PATH"' >> ~/.bash_profile
 export LDFLAGS="-L${PREFIX}/lib -Wl,-rpath,${PREFIX}/lib"
 export CPPFLAGS="-I${PREFIX}/include -I${PREFIX}/include/c++/v1/"
+
 
 echo "BUILD FOR DARWIN"
 cmake -DCMAKE_INSTALL_PREFIX:PATH=../install \

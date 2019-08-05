@@ -1,5 +1,5 @@
 {% set name = "nest" %}
-{% set version = "master" %}
+{% set version = "2.18.0" %}
 
 package:
   name: {{ name|lower }}
@@ -26,7 +26,7 @@ requirements:
     - git
     - make
     - sed
-    - gcc
+    # - gcc
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     # - clang
@@ -44,8 +44,8 @@ requirements:
     - gsl
     - {{ pin_compatible('libcblas') }}
     - libtool
-    - libcxx
-    - libcxxabi
+    # - libcxx
+    # - libcxxabi
     - libedit
     - libffi
     - libssh2
