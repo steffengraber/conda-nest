@@ -110,6 +110,8 @@ install:
   - ls -l
   - ls -l install/
   - ls -l nest/
+  - . bin/nest_vars.sh
+  - nest --help
 
 script:
   # - conda install --use-local nest-simulator

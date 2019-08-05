@@ -24,6 +24,5 @@ cmake -DCMAKE_INSTALL_PREFIX:PATH=../install \
 make
 make install
 cd ../install
-. bin/nest_vars.sh
 
 
