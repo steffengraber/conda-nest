@@ -1,13 +1,13 @@
 {% set name = "nest" %}
-{% set version = "nest-2.18" %}
+{% set version = "2.18.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  git_rev: {{ version  }}
-  git_url: https://github.com/nest/nest-simulator.git
+  url: https://github.com/nest/{{ name }}/archive/v{{ version }}.tar.gz
+  sha256: 7295c936fbdd5486395b06f54f0d4d35d9a1b6ee50b7b844186ec2c92de641d1
 
 build:
   number: 0
@@ -22,8 +22,9 @@ requirements:
     - anaconda
     - defaults
   build:
-    - cmake
+    - cmake >=3.6
     - git
+    - llvm-openmp
     - make
     - sed
     # - gcc
@@ -50,7 +51,10 @@ requirements:
     - libffi
     - libssh2
     - libuv
+    - libtool
+    - llvm-openmp
     - matplotlib
+    - mpi4py
     - libiconv
     - {{ pin_compatible('ncurses') }}
     - {{ pin_compatible('numpy') }}
