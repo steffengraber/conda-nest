@@ -110,7 +110,7 @@ install:
   - ls -l
   - ls -l install/
   - ls -l nest/
-  - . bin/nest_vars.sh
+  - . install/bin/nest_vars.sh
   - nest --help
 
 script:
