@@ -26,13 +26,16 @@ requirements:
     - git
     - make
     - sed
-    - clang
-    - clang_osx-64
-    - clangxx
-    - clangxx_osx-64
-    - llvm
-    - llvm-lto-tapi
-    - llvm-openmp
+    - gcc
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    # - clang
+    # - clang_osx-64
+    # - clangxx
+    # - clangxx_osx-64
+    # - llvm
+    # - llvm-lto-tapi
+    # -  llvm-openmp
   host:
     - ca-certificates
     - cctools

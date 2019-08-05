@@ -1,67 +1,28 @@
 #!/bin/sh
 
+#!/bin/sh
+
 export MPI_FLAGS=--allow-run-as-root
 
-if [[ $(uname) == Linux ]]; then
-  export MPI_FLAGS="$MPI_FLAGS;-mca;plm;isolated"
-	export CFLAGS="-I${PREFIX}/include"
-	export LDFLAGS="-L${PREFIX}/lib"
-fi
-
-#if [[ $(uname) == Darwin ]]; then
-#  echo "FALGS FOR DARWIN"
-#	# export CC=clang
-#	# export CXX=x86_64-apple-darwin13.4.0-clang++
-#	echo 'export ${PREFIX}/bin:$PATH"' >> ~/.bash_profile
-#	#export CFLAGS="${CFLAGS} -i sysroot ${PREFIX}"
-#	#export CXXFLAGS="${CFLAGS} -i sysroot ${PREFIX}"
-#	export LDFLAGS="-L${PREFIX}/lib -Wl,-rpath,${PREFIX}/lib"
-#	export CPPFLAGS="-I${PREFIX}/include -I${PREFIX}/include/c++/v1/"
-#fi
-
 mkdir build
+mkdir install
+
+git clone  https://github.com/nest/nest-simulator.git
+
+ls -l
+
 cd build
+export CC=clang
+export CXX=clang++
 
-# Linux build
-if [[ $(uname) == Linux ]]; then
-	cmake -DCMAKE_INSTALL_PREFIX:PATH=${PREFIX} \
-	    -Dwith-mpi=OFF\
-		  -Dwith-openmp=OFF \
-		  -Dwith-python=3 \
-		  -Dwith-gsl=${PREFIX} \
-		  -DREADLINE_ROOT_DIR=${PREFIX} \
-		  -DLTDL_ROOT_DIR=${PREFIX} \
-		  ..
-fi
-
-# OSX build
-if [[ $(uname) == Darwin ]]; then
-  echo "BUILD FOR DARWIN"
-	cmake -DCMAKE_INSTALL_PREFIX:PATH=${BUILD_PREFIX} \
-	    -DCMAKE_CXX_FLAGS=-stdlib=libc++ \
-		  -Dwith-mpi=OFF \
-		  -Dwith-openmp=OFF \
-		  -Dwith-python=3 \
-		  -DPYTHON_EXECUTABLE=${PYTHON}\
-		  -DPYTHON_LIBRARY=${BUILD_PREFIX}/lib/libpython${PY_VER}.dylib \
-		  -Dwith-gsl=${BUILD_PREFIX} \
-		  -DREADLINE_ROOT_DIR=${BUILD_PREFIX} \
-		  -DLTDL_ROOT_DIR=${BUILD_PREFIX} \
-		  ..
-fi
-
-
-make -j${CPU_COUNT}
+echo "BUILD FOR DARWIN"
+cmake -DCMAKE_INSTALL_PREFIX:PATH=../install \
+	  -Dwith-openmp=OFF \
+	  -Dwith-mpi=OFF \
+	  -Dwith-python=3 \
+	  -DCMAKE_C_COMPILER=gcc\
+	  -DCMAKE_CXX_COMPILER=g++\
+	  ../nest-simulator
+make
 make install
-
-if [[ -d ${PREFIX}/lib64 ]]
-then
-    cp -R ${PREFIX}/lib64/* ${PREFIX}/lib
-fi
-
-
-for CHANGE in "activate" "deactivate"
-do
-    mkdir -p "${PREFIX}/etc/conda/${CHANGE}.d"
-    sed "s#!!!SP_DIR!!!#${SP_DIR}#g" "${RECIPE_DIR}/${CHANGE}.sh" > "${PREFIX}/etc/conda/${CHANGE}.d/${PKG_NAME}_${CHANGE}.sh"
-done
+cd ../install

@@ -41,7 +41,7 @@ matrix:
     #  python: 3.6
     - name: "NEST simulator with Python 3.7 on macOS"
       os: osx
-      osx_image: xcode10.2  # Python 3.7.2 running on macOS 10.14.3
+      osx_image: xcode11  # Python 3.7.2 running on macOS 10.14.3
       language: generic       # 'language: python' is an error on Travis CI macOS
 
 before_install:
@@ -57,20 +57,23 @@ before_install:
   # - cd $HOME/build
   - echo $PATH
   # Upgrade pip and setuptools
-  - if [[ $TRAVIS_BUILD_STAGE_NAME == "Gcc8clang7" ]]; then pyenv global 3.6.3; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew --version; brew update; brew tap brewsci/science; brew tap brewsci/bio; brew install coreutils gsl open-mpi automake autoconf libtool; brew upgrade python; brew install libomp;fi
-#  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then MINICONDA_OS=Linux; else MINICONDA_OS=MacOSX; fi
-#  - wget https://repo.anaconda.com/miniconda/Miniconda3-latest-$MINICONDA_OS-x86_64.sh -O miniconda.sh
-#  - bash miniconda.sh -b -p "$HOME"/miniconda
-#  - export PATH="$HOME/miniconda/bin:$PATH"
-#  - source "$HOME"/miniconda/etc/profile.d/conda.sh
-#  - hash -r
-#  - conda config --set always_yes yes --set changeps1 no
-#  - conda update -q conda
-#  - conda config --add channels conda-forge
-#  - conda info -a
-#  # - conda create --yes -n test
-#  # - source activate test
+####  - if [[ $TRAVIS_BUILD_STAGE_NAME == "Gcc8clang7" ]]; then pyenv global 3.6.3; fi
+####  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew --version; brew update; brew tap brewsci/science; brew tap
+####  brewsci/bio; brew install coreutils gsl open-mpi automake autoconf libtool; brew upgrade python; brew install
+####  libomp;fi
+   # Install Miniconda
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then MINICONDA_OS=Linux; else MINICONDA_OS=MacOSX; fi
+  - wget https://repo.anaconda.com/miniconda/Miniconda3-latest-$MINICONDA_OS-x86_64.sh -O miniconda.sh
+  - bash miniconda.sh -b -p "$HOME"/miniconda
+  - export PATH="$HOME/miniconda/bin:$PATH"
+  - source "$HOME"/miniconda/etc/profile.d/conda.sh
+  - hash -r
+  - conda config --set always_yes yes --set changeps1 no
+  - conda update -q conda
+  - conda config --add channels conda-forge
+  - conda info -a
+  # - conda create --yes -n test
+  # - source activate test
 #  - conda install -y -c anaconda conda-build conda-verify automake autoconf libtool wget setuptools git
 #  # - if [[ "$TRAVIS_OS_NAME" = "linux" ]]; then conda install -y -c anaconda gcc_linux-64 gxx_linux-64; fi
 #  # - if [[ "$TRAVIS_OS_NAME" = "osx" ]]; then conda install -y -c anaconda clang_osx-64 clangxx_osx-64 llvm
@@ -78,12 +81,9 @@ before_install:
 #  # - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew --version; brew update; brew tap brewsci/science; brew tap
 #  # - brewsci/bio; brew install coreutils; fi
 #  # - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew --version; brew install coreutils; fi
-#  - conda clean -y --all
-#  - echo "INSTALL NOW"
-#  - conda build nest
-#  - conda install nest --use-local
-  - pip install cython scipy matplotlib terminaltables
-  - pip install numpy==1.13.3
+  - conda clean -y --all
+####  - pip install cython scipy matplotlib terminaltables
+####  - pip install numpy==1.13.3
   - which cython
   - cython --version
   - which python
@@ -94,24 +94,27 @@ before_install:
   - which clang
   - clang -v
   - pip list
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then which nosetests; nosetests --version; nosetests --plugins; fi
+####  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then which nosetests; nosetests --version; nosetests --plugins; fi
   - which cmake
   - cmake --version
   - echo ${CC}
   - echo ${CXX}
   - ls -l
   - echo "BEFORE INSTALL END"
+  - echo "INSTALL NOW"
+  - conda build nest
+  - conda install nest --use-local
 
 install:
-  - chmod +x ./nest/travis_build.sh
-  - ./nest/travis_build.sh
-  #- nest --help
-  # - sli --help
-  - ls -l
-  - ls -l install/
-  - ls -l nest/
-  - . install/bin/nest_vars.sh
+####  - chmod +x ./nest/travis_build.sh
+####  - ./nest/travis_build.sh
   - nest --help
+  - sli --help
+####  - ls -l
+####  - ls -l install/
+####  - ls -l nest/
+####  - . install/bin/nest_vars.sh
+####  - nest --help
 
 script:
   # - conda install --use-local nest-simulator
