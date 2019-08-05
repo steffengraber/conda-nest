@@ -72,6 +72,7 @@ before_install:
   - conda update -q conda
   - conda config --add channels conda-forge
   - conda info -a
+  - conda install -y conda-build conda-verify
   # - conda create --yes -n test
   # - source activate test
 #  - conda install -y -c anaconda conda-build conda-verify automake autoconf libtool wget setuptools git
