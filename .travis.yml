@@ -105,8 +105,9 @@ before_install:
 install:
   - chmod +x ./nest/travis_build.sh
   - ./nest/travis_build.sh
-  - nest --help
-  # - sli --helpt
+  #- nest --help
+  # - sli --help
+  - ls -l
 
 script:
   # - conda install --use-local nest-simulator

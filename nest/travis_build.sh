@@ -23,6 +23,7 @@ cmake -DCMAKE_INSTALL_PREFIX:PATH=../install \
 	  ../nest-simulator
 make
 make install
-source ../install/bin/nest_vars.sh
+cd ../install
+. bin/nest_vars.sh
 
 
