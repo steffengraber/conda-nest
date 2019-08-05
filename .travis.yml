@@ -84,6 +84,10 @@ before_install:
   - conda clean -y --all
 ####  - pip install cython scipy matplotlib terminaltables
 ####  - pip install numpy==1.13.3
+  - echo "BEFORE INSTALL END"
+  - echo "BUILD NOW"
+  - conda build nest
+  - echo "BUILD END"
   - which cython
   - cython --version
   - which python
@@ -94,15 +98,13 @@ before_install:
   - which clang
   - clang -v
   - pip list
-####  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then which nosetests; nosetests --version; nosetests --plugins; fi
+  ####  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then which nosetests; nosetests --version; nosetests --plugins; fi
   - which cmake
   - cmake --version
   - echo ${CC}
   - echo ${CXX}
   - ls -l
-  - echo "BEFORE INSTALL END"
   - echo "INSTALL NOW"
-  - conda build nest
   - conda install nest --use-local
 
 install:
