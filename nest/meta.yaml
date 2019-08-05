@@ -1,5 +1,5 @@
 {% set name = "nest" %}
-{% set version = "2.18.0" %}
+{% set version = "nest-2.18" %}
 
 package:
   name: {{ name|lower }}
