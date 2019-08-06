@@ -26,17 +26,25 @@ requirements:
     - openmp  # [linux]
     - sed
     - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
+    - {{ compiler('cxx') }
+    - {{ mpi }}}
+    - numpy  {{ numpy }}
+    - openmpi
+    - openmp
+
   host:
     - cython
     - gsl
     - {{ pin_compatible('libcblas') }}
     - libtool
+    - llvm
+    - llvmdev
     - llvm-openmp  # [osx]
     - matplotlib
     - {{ pin_compatible('ncurses') }}
     - {{ pin_compatible('numpy') }}
-    - {{ mpi }}
+    - openmpi
+    - openmp
     - mpi4py
     - openmp  # [linux]
     - python
@@ -56,6 +64,7 @@ requirements:
     - {{ pin_compatible('numpy') }}
     - {{ mpi }}
     - mpi4py
+    - numpy  {{ numpy }}
     - openmp  # [linux]
     - python
     - python.app  # [osx]
