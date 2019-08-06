@@ -76,7 +76,8 @@ before_install:
 #  - conda clean -y --all
   - echo "BEFORE INSTALL END"
   - echo "BUILD NOW"
-  - conda build nest
+  - xcrun --show-sdk-path
+  #- conda build nest
   - echo "BUILD END"
   - which cython
   - cython --version
