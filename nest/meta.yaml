@@ -28,7 +28,7 @@ requirements:
     - openmp  # [linux]
     - sed
     - {{ compiler('c') }}
-    - {{ compiler('cxx') }
+    - {{ compiler('cxx') }}
     - openmpi
     - openmp
 
