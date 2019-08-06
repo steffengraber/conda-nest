@@ -63,6 +63,8 @@ before_install:
   - conda update -q conda
   - conda config --add channels conda-forge
   - conda info -a
+  - conda create --name mybuildenv
+  - conda activate mybuildenv
   - conda install -y -c conda-forge conda-build conda-verify
   # - conda create --yes -n test
   # - source activate test
