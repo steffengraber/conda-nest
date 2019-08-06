@@ -1,75 +1,58 @@
-{% set name = "nest-simulator" %}
-{% set version = "2.18.0" %}
+{% set name = "nest" %}
+{% set version = "master" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://github.com/nest/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 7295c936fbdd5486395b06f54f0d4d35d9a1b6ee50b7b844186ec2c92de641d1
+  git_rev: {{ version  }}
+  git_url: https://github.com/nest/nest-simulator.git
 
 build:
   number: 0
   skip: true  # [win]
-  # skip: true  # [osx]
-  skip: true  # [py<30]
+  skip: true  # [osx]
+  # skip: true  # [py<30]
   osx_is_app: True
 
 requirements:
-  channels:
-    - conda-forge
-  build:
-    - git
-    - llvm
-    - llvmdev
-    - llvm-openmp  # [osx]
-    - make
-    - openmp  # [linux]
-    - sed
-    - clang_osx-64
-    - clangxx_osx-64
-    - openmpi
-    - openmp
 
+  build:
+    - cmake >=3.6
+    - git
+    - make
+    - sed
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
   host:
     - cython
     - gsl
-    - {{ pin_compatible('libcblas') }}
     - libtool
+    - libcblas
     - matplotlib
-    - {{ pin_compatible('ncurses') }}
-    - {{ pin_compatible('numpy') }}
+    - ncurses
+    - numpy
     - openmpi
-    - openmp
-    - mpi4py
-    - openmp  # [linux]
-    - python
+    - python =3.7
     - readline
     - scipy
-    - openssh
     - statsmodels
     - zlib
   run:
     - cython
     - gsl
-    - {{ pin_compatible('libcblas') }}
     - libtool
-    - llvm-openmp  # [osx]
+    - libcblas
     - matplotlib
-    - {{ pin_compatible('ncurses') }}
+    - ncurses
     - {{ pin_compatible('numpy') }}
     - openmpi
-    - openmp
-    - mpi4py
-    - numpy
-    - openmp  # [linux]
-    - python
-    - python.app  # [osx]
+    - python =3.7
+    - python.app # [osx]
     - readline
     - scipy
     - statsmodels
-    - openssh
     - zlib
 
 test:

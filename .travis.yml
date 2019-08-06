@@ -66,40 +66,13 @@ before_install:
   - conda create --name mybuildenv
   - conda activate mybuildenv
   - conda install -y -c conda-forge conda-build conda-verify
-  # - conda create --yes -n test
-  # - source activate test
-#  - conda install -y -c anaconda conda-build conda-verify automake autoconf libtool wget setuptools git
-#  # - if [[ "$TRAVIS_OS_NAME" = "linux" ]]; then conda install -y -c anaconda gcc_linux-64 gxx_linux-64; fi
-#  # - if [[ "$TRAVIS_OS_NAME" = "osx" ]]; then conda install -y -c anaconda clang_osx-64 clangxx_osx-64 llvm
-#  # - llvm-openmp; fi
-#  # - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew --version; brew update; brew tap brewsci/science; brew tap
-#  # - brewsci/bio; brew install coreutils; fi
-#  # - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew --version; brew install coreutils; fi
-#  - conda clean -y --all
   - echo "BEFORE INSTALL END"
-  - echo "BUILD NOW"
   - xcrun --show-sdk-path
-  - conda build nest
-  - echo "BUILD END"
-  - which cython
-  - cython --version
-  - which python
-  - python --version
-  - which pip
-  - which g++
-  - g++ -v
-  - which clang
-  - clang -v
-  # - pip list
-  - which cmake
-  - cmake --version
-  - echo ${CC}
-  - echo ${CXX}
-  - ls -l
   - echo "INSTALL NOW"
 
 install:
-  - conda install nest --use-local
+  - conda build nest
+  #- conda install nest --use-local
 
 script:
   # - conda install --use-local nest-simulator
