@@ -1,53 +1,69 @@
 #!/bin/sh
 
-#!/bin/sh
-
-
-# activate the build environment
-. activate "${BUILD_PREFIX}"
-
-# "stack" the host environment on top of the build env
-mkdir -p "${PREFIX}/conda-meta"
-touch "${PREFIX}/conda-meta/history"
-unset CONDA_PATH_BACKUP
-export CONDA_MAX_SHLVL=2
-source ${BUILD_PREFIX}/bin/activate "${PREFIX}"
-
-
 export MPI_FLAGS=--allow-run-as-root
 
+if [[ $(uname) == Linux ]]; then
+    export MPI_FLAGS="$MPI_FLAGS;-mca;plm;isolated"
+	export CFLAGS="-I${PREFIX}/include"
+	export LDFLAGS="-L${PREFIX}/lib"
+fi
+
+if [[ $(uname) == Darwin ]]; then
+	echo 'export ${PREFIX}/bin:$PATH"' >> ~/.bash_profile
+	export LDFLAGS="-L${PREFIX}/lib -Wl,-rpath,${PREFIX}/lib"
+	export CPPFLAGS="-I${PREFIX}/include -I${PREFIX}/include/c++/v1/"
+fi
+
 mkdir build
-mkdir install
-
-git clone  https://github.com/nest/nest-simulator.git
-
-ls -l
-
 cd build
 
-export CFLAGS="${CFLAGS} -i sysroot ${CONDA_BUILD_SYSROOT}"
-export CXXFLAGS="${CFLAGS}
+mpi_arg=""
+if [[ "$mpi" != "nompi" ]]; then
+  mpi_arg="ON"
+else
+	mpi_arg="OFF"
+fi
+echo "Der MPI-Flag lautet: ${mpi_arg}"
+
+# Linux build
+if [[ $(uname) == Linux ]]; then
+	cmake -DCMAKE_INSTALL_PREFIX:PATH=${PREFIX} \
+		  -Dwith-mpi=${mpi_arg} \
+		  -Dwith-openmp=${mpi_arg} \
+		  -Dwith-python=3 \
+		  -Dwith-gsl=${PREFIX} \
+		  -DREADLINE_ROOT_DIR=${PREFIX} \
+		  -DLTDL_ROOT_DIR=${PREFIX} \
+		  ..
+fi
+
+# OSX build
+if [[ $(uname) == Darwin ]]; then
+	cmake -DCMAKE_INSTALL_PREFIX:PATH=${PREFIX} \
+		  -DCMAKE_OSX_SYSROOT=${CONDA_BUILD_SYSROOT} \
+		  -Dwith-mpi=${mpi_arg} \
+		  -Dwith-openmp=${mpi_arg} \
+		  -Dwith-python=3 \
+		  -DPYTHON_EXECUTABLE=${PYTHON}\
+		  -DPYTHON_LIBRARY=${PREFIX}/lib/libpython${PY_VER}.dylib \
+		  -Dwith-gsl=${PREFIX} \
+		  -DREADLINE_ROOT_DIR=${PREFIX} \
+		  -DLTDL_ROOT_DIR=${PREFIX} \
+		  ..
+fi
 
 
-echo 'export ${PREFIX}/bin:$PATH"' >> ~/.bash_profile
-export LDFLAGS="-L${PREFIX}/lib -Wl,-rpath,${PREFIX}/lib"
-export CPPFLAGS="-I${PREFIX}/include -I${PREFIX}/include/c++/v1/ -fopenmp"
-
-
-echo "BUILD FOR DARWIN"
-cmake -DCMAKE_INSTALL_PREFIX:PATH=../install \
-	  -DCMAKE_OSX_SYSROOT=${CONDA_BUILD_SYSROOT} \
-	  -Dwith-openmp=OFF \
-	  -Dwith-mpi=OFF \
-	  -Dwith-python=3 \
-	  -DPYTHON_EXECUTABLE=${PYTHON}\
-	  -DPYTHON_LIBRARY=${PREFIX}/lib/libpython${PY_VER}.dylib \
-	  -Dwith-gsl=${PREFIX} \
-	  -DREADLINE_ROOT_DIR=${PREFIX} \
-	  -DLTDL_ROOT_DIR=${PREFIX} \
-	  -DCMAKE_C_COMPILER=${PREFIX}/bin/clang \
-	  -DCMAKE_CXX_COMPILER=${PREFIX}/bin/clang++ \
-	  ../nest-simulator
-make
+make -j${CPU_COUNT}
 make install
-cd ../install
+
+if [[ -d ${PREFIX}/lib64 ]]
+then
+    cp -R ${PREFIX}/lib64/* ${PREFIX}/lib
+fi
+
+
+for CHANGE in "activate" "deactivate"
+do
+    mkdir -p "${PREFIX}/etc/conda/${CHANGE}.d"
+    sed "s#!!!SP_DIR!!!#${SP_DIR}#g" "${RECIPE_DIR}/${CHANGE}.sh" > "${PREFIX}/etc/conda/${CHANGE}.d/${PKG_NAME}_${CHANGE}.sh"
+done

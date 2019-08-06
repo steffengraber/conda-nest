@@ -13,57 +13,35 @@ build:
   number: 0
   skip: true  # [win]
   # skip: true  # [osx]
-  # skip: true  # [py<30]
+  skip: true  # [py<30]
   osx_is_app: True
 
 requirements:
   channels:
     - conda-forge
   build:
-    - cmake >=3.6
     - git
-    - llvm-openmp
+    - llvm-openmp  # [osx]
     - make
+    - openmp  # [linux]
     - sed
-    # - gcc
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    # - clang
-    # - clang_osx-64
-    # - clangxx
-    # - clangxx_osx-64
-    # - llvm
-    # - llvm-lto-tapi
-    # -  llvm-openmp
   host:
-    - ca-certificates
-    - cctools
-    - compiler-rt
     - cython
     - gsl
     - {{ pin_compatible('libcblas') }}
     - libtool
-    # - libcxx
-    # - libcxxabi
-    - libedit
-    - libffi
-    - libssh2
-    - libuv
-    - libtool
-    - llvm-openmp
+    - llvm-openmp  # [osx]
     - matplotlib
-    - mpi4py
-    - libiconv
     - {{ pin_compatible('ncurses') }}
     - {{ pin_compatible('numpy') }}
-    - openssl
-    - perl
-    - python =3.7
-    - rhash
+    - {{ mpi }}
+    - mpi4py
+    - openmp  # [linux]
+    - python
     - readline
     - scipy
-    - tk
-    - xz
     - openssh
     - statsmodels
     - zlib
@@ -72,11 +50,14 @@ requirements:
     - gsl
     - {{ pin_compatible('libcblas') }}
     - libtool
-    # - llvm-openmp  # [osx]
+    - llvm-openmp  # [osx]
     - matplotlib
     - {{ pin_compatible('ncurses') }}
     - {{ pin_compatible('numpy') }}
-    - python =3.7
+    - {{ mpi }}
+    - mpi4py
+    - openmp  # [linux]
+    - python
     - python.app  # [osx]
     - readline
     - scipy
