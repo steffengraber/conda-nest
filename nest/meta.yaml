@@ -21,13 +21,14 @@ requirements:
     - conda-forge
   build:
     - git
+    - llvm
+    - llvmdev
     - llvm-openmp  # [osx]
     - make
     - openmp  # [linux]
     - sed
     - {{ compiler('c') }}
     - {{ compiler('cxx') }
-    - {{ mpi }}}
     - openmpi
     - openmp
 
@@ -36,9 +37,6 @@ requirements:
     - gsl
     - {{ pin_compatible('libcblas') }}
     - libtool
-    - llvm
-    - llvmdev
-    - llvm-openmp  # [osx]
     - matplotlib
     - {{ pin_compatible('ncurses') }}
     - {{ pin_compatible('numpy') }}
@@ -61,7 +59,8 @@ requirements:
     - matplotlib
     - {{ pin_compatible('ncurses') }}
     - {{ pin_compatible('numpy') }}
-    - {{ mpi }}
+    - openmpi
+    - openmp
     - mpi4py
     - numpy
     - openmp  # [linux]
