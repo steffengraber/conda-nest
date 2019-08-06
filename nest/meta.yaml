@@ -1,4 +1,4 @@
-{% set name = "nest" %}
+{% set name = "nest-simulator" %}
 {% set version = "2.18.0" %}
 
 package:
@@ -19,8 +19,6 @@ build:
 requirements:
   channels:
     - conda-forge
-    - anaconda
-    - defaults
   build:
     - cmake >=3.6
     - git
