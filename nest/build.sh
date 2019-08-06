@@ -9,6 +9,7 @@ if [[ $(uname) == Linux ]]; then
 fi
 
 if [[ $(uname) == Darwin ]]; then
+	CONDA_BUILD_SYSROOT = "/Applications/Xcode-10.2.1.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk"
 	echo 'export ${PREFIX}/bin:$PATH"' >> ~/.bash_profile
 	export LDFLAGS="-L${PREFIX}/lib -Wl,-rpath,${PREFIX}/lib"
 	export CPPFLAGS="-I${PREFIX}/include -I${PREFIX}/include/c++/v1/"
