@@ -27,7 +27,7 @@ jobs:
         ls -l
         bash miniconda.sh -b -p $PWD/miniconda
         export PATH="$HOME/miniconda/bin:$PATH"
-        source "$HOME"/miniconda/etc/profile.d/conda.sh
+        source $PWD/miniconda/etc/profile.d/conda.sh
         hash -r
         conda config --set always_yes yes --set changeps1 no
         conda update -q conda
