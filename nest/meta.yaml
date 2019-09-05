@@ -37,7 +37,6 @@ requirements:
     # -  llvm-openmp
   host:
     - ca-certificates
-    - cctools
     - compiler-rt
     - cython
     - gsl
