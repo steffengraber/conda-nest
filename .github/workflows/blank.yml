@@ -21,7 +21,8 @@ jobs:
         ls $PWD
         echo $PATH
         python3 -v
-        if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then MINICONDA_OS=Linux; else MINICONDA_OS=MacOSX; fi
+        if [ "$(uname)" == "Darwin" ]; then  MINICONDA_OS=MacOSX; else MINICONDA_OS=Linux; fi
+        # if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then MINICONDA_OS=Linux; else MINICONDA_OS=MacOSX; fi
         wget https://repo.anaconda.com/miniconda/Miniconda3-latest-$MINICONDA_OS-x86_64.sh -O miniconda.sh
         ls -l
         bash miniconda.sh -b -p $PWD/miniconda
