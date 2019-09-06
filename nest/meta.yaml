@@ -22,7 +22,7 @@ requirements:
   build:
     - cmake >=3.6
     - git
-    - llvm-openmp
+    # - llvm-openmp
     - make
     - sed
     # - gcc
@@ -49,14 +49,14 @@ requirements:
     - libssh2
     - libuv
     - libtool
-    - llvm-openmp # [osx]
+    # - llvm-openmp # [osx]
     - matplotlib
-    - mpi
     - mpi4py
+    - {{ mpi }}
+    - openmp
     - libiconv
     - {{ pin_compatible('ncurses') }}
     - {{ pin_compatible('numpy') }}
-    - openmp
     - openssl
     - perl
     - python =3.7
@@ -73,10 +73,9 @@ requirements:
     - gsl
     - {{ pin_compatible('libcblas') }}
     - libtool
-    - llvm-openmp  # [osx]
+    # - llvm-openmp  # [osx]
     - matplotlib
-    - mpi
-    - mpi4py
+    - {{ mpi }}
     - openmp
     - {{ pin_compatible('ncurses') }}
     - {{ pin_compatible('numpy') }}
