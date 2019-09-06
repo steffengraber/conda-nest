@@ -13,6 +13,7 @@ jobs:
       run: echo Hello, world!
     - name: Set Up Build Environment
       uses: docker://continuumio/miniconda:latest
+    - name: Run now
       run: |
         echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
         echo "+         P R E P A R E   N E S T   B U I L D   E N V I R O N M E N T         +"
