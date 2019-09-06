@@ -12,7 +12,7 @@ export LDFLAGS="-L$PREFIX/lib"
 mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX:PATH=$PREFIX \
-      -Dwith-mpi=ON \
+      -Dwith-mpi=OFF \
       -Dwith-openmp=ON \
       -Dwith-python=3 \
       -Dwith-gsl=$PREFIX \

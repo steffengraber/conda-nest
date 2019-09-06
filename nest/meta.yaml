@@ -52,7 +52,6 @@ requirements:
     # - llvm-openmp # [osx]
     - matplotlib
     - mpi4py
-    - {{ mpi }}
     - openmp
     - libiconv
     - {{ pin_compatible('ncurses') }}
@@ -75,7 +74,6 @@ requirements:
     - libtool
     # - llvm-openmp  # [osx]
     - matplotlib
-    - {{ mpi }}
     - openmp
     - {{ pin_compatible('ncurses') }}
     - {{ pin_compatible('numpy') }}
