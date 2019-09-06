@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@master
     - name: Run a one-line script
       run: echo Hello, world!
     - name: Set Up Build Environment
@@ -16,6 +16,10 @@ jobs:
         echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
         echo "+         P R E P A R E   N E S T   B U I L D   E N V I R O N M E N T         +"
         echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
+        apt-get update && apt-get install -y wget bzip2 git cmake &&
+        apt-get update --fix-missing
+        apt-get autoremove -y
+        rm -rf /var/lib/apt/lists/*
         export SOURCEDIR=$PWD
         echo $PWD
         ls $PWD
@@ -33,7 +37,7 @@ jobs:
         conda update -q conda
         conda config --add channels conda-forge
         conda info -a
-    - name: Install now
+    - name: Build and Install now
       run: |
         conda install -y -c conda-forge conda-build conda-verify
         conda build nest
