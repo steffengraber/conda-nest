@@ -38,8 +38,8 @@ jobs:
         conda install -y -c conda-forge conda-build conda-verify
         conda update conda-build
         conda build nest
-    - name: Build and Install now
+        conda install --use-local nest
+    - name: Test
       run: |
-        conda install nest --use-local
         nest --help
         sli --help

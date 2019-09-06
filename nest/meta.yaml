@@ -84,8 +84,8 @@ requirements:
     - zlib
 
 test:
-  imports:
-    - nest
+  #imports:
+  #  - nest
   commands:
     - nest --help
     - sli --help
