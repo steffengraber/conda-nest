@@ -16,10 +16,6 @@ jobs:
         echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
         echo "+         P R E P A R E   N E S T   B U I L D   E N V I R O N M E N T         +"
         echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
-        apt-get update && apt-get install -y wget bzip2 git cmake &&
-        apt-get update --fix-missing
-        apt-get autoremove -y
-        rm -rf /var/lib/apt/lists/*
         export SOURCEDIR=$PWD
         echo $PWD
         ls $PWD
