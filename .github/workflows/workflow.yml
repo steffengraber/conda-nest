@@ -36,6 +36,7 @@ jobs:
         conda config --add channels conda-forge
         conda info -a
         conda install -y -c conda-forge conda-build conda-verify
+        conda update conda-build
         conda build nest
     - name: Build and Install now
       run: |

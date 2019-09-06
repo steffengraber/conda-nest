@@ -22,4 +22,4 @@ cmake -DCMAKE_INSTALL_PREFIX:PATH=$PREFIX \
 make -j2
 make install
 # this is needed to make the python bindings work
-cp $PREFIX/lib64/* $PREFIX/lib -r
+# cp $PREFIX/lib64/* $PREFIX/lib -r
