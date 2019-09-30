@@ -71,7 +71,7 @@ before_install:
   - echo "INSTALL NOW"
 
 install:
-  - conda build -c conda-forge nest
+  - conda build nest
   #- conda install nest --use-local
 
 script:
