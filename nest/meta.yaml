@@ -19,8 +19,8 @@ requirements:
     #- llvm-openmp  # [osx]
     - make
     - sed
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
+    # - {{ compiler('c') }}
+    # - {{ compiler('cxx') }}
   host:
     - cython
     - gsl
