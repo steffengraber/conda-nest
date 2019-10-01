@@ -12,11 +12,15 @@ source:
 build:
   osx_is_app: True
 
+extra:
+  channels:
+    - conda-forge
+
 requirements:
   build:
     - cmake >=3.6
     - git
-    #- {{ llvm-openmp }}
+    - llvm-openmp
     - make
     - sed
     # - {{ compiler('c') }}
