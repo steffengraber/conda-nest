@@ -16,45 +16,45 @@ requirements:
   build:
     - cmake >=3.6
     - git
-    #- llvm-openmp  # [osx]
+    - llvm-openmp  # [osx]
     - make
-    - sed # [linux]
+    - sed
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
     - cython
     - gsl
     - libtool
-    - {{ pin_compatible('libcblas') }} # [linux]
-    #- llvm-openmp  # [osx]
+    - {{ pin_compatible('libcblas') }}
+    - llvm-openmp  # [osx]
     - matplotlib
     - {{ pin_compatible('ncurses') }}
     - {{ pin_compatible('numpy') }}
-    #- openmpi
-    #- openmp # [linux]
+    - openmpi
+    - openmp
     - python =3.7
     - readline
     - scipy
-    - openssh # [linux]
+    - openssh
     - statsmodels
     - zlib
   run:
     - cython
     - gsl
     - libtool
-    - {{ pin_compatible('libcblas') }} # [linux]
-    #- llvm-openmp  # [osx]
+    - {{ pin_compatible('libcblas') }}
+    - llvm-openmp  # [osx]
     - matplotlib
     - {{ pin_compatible('ncurses') }}
     - {{ pin_compatible('numpy') }}
-    #- openmpi
-    #- openmp # [linux]
+    - openmpi
+    - openmp
     - python =3.7
     - python.app # [osx]
     - readline
     - scipy
     - statsmodels
-    - openssh # [linux]
+    - openssh
     - zlib
 
 test:
