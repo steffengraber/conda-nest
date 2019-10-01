@@ -20,6 +20,7 @@ requirements:
   build:
     - cmake >=3.6
     - git
+    - llvm-openmp  # [osx]
     - make
     - sed
     - {{ compiler('c') }}
@@ -28,30 +29,36 @@ requirements:
     - cython
     - gsl
     - libtool
-    - libcblas
+    - {{ pin_compatible('libcblas') }}
+    - llvm-openmp  # [osx]
     - matplotlib
-    - ncurses
-    - numpy
+    - {{ pin_compatible('ncurses') }}
+    - {{ pin_compatible('numpy') }}
     - openmpi
+    - openmp
     - python =3.7
     - readline
     - scipy
+    - openssh
     - statsmodels
     - zlib
   run:
     - cython
     - gsl
     - libtool
-    - libcblas
+    - {{ pin_compatible('libcblas') }}
+    - llvm-openmp  # [osx]
     - matplotlib
-    - ncurses
+    - {{ pin_compatible('ncurses') }}
     - {{ pin_compatible('numpy') }}
     - openmpi
+    - openmp
     - python =3.7
     - python.app # [osx]
     - readline
     - scipy
     - statsmodels
+    - openssh
     - zlib
 
 test:
