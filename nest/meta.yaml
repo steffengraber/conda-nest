@@ -1,19 +1,15 @@
 {% set name = "nest" %}
-{% set version = "master" %}
+{% set version = "2.18.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  git_rev: {{ version  }}
-  git_url: https://github.com/nest/nest-simulator.git
+  url: https://github.com/nest/{{ name }}-simulator/archive/v{{ version }}.tar.gz
+  sha256: 7295c936fbdd5486395b06f54f0d4d35d9a1b6ee50b7b844186ec2c92de641d1
 
 build:
-  #skip: true  # [win]
-  # number: 0
-  #skip: true  # [osx]
-  # skip: true  # [py<30]
   osx_is_app: True
 
 requirements:
