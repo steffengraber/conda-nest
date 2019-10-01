@@ -55,6 +55,7 @@ install:
   - conda update -q conda
   # Useful for debugging any issues with conda
   - conda info -a
+  - conda config --add channels conda-forge
   - conda install -y -c conda-forge conda-build conda-verify
   - conda build nest
   - conda install nest --use-local
