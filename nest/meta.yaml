@@ -22,7 +22,7 @@ requirements:
     - git
     - llvm-openmp  # [osx]
     - make
-    - sed
+    - sed # [linux]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
