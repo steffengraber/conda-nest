@@ -29,36 +29,36 @@ requirements:
     - cython
     - gsl
     - libtool
-    - {{ pin_compatible('libcblas') }}
+    - {{ pin_compatible('libcblas') }} # [linux]
     - llvm-openmp  # [osx]
     - matplotlib
     - {{ pin_compatible('ncurses') }}
     - {{ pin_compatible('numpy') }}
     - openmpi
-    - openmp
+    - openmp # [linux]
     - python =3.7
     - readline
     - scipy
-    - openssh
+    - openssh # [linux]
     - statsmodels
     - zlib
   run:
     - cython
     - gsl
     - libtool
-    - {{ pin_compatible('libcblas') }}
+    - {{ pin_compatible('libcblas') }} # [linux]
     - llvm-openmp  # [osx]
     - matplotlib
     - {{ pin_compatible('ncurses') }}
     - {{ pin_compatible('numpy') }}
     - openmpi
-    - openmp
+    - openmp # [linux]
     - python =3.7
     - python.app # [osx]
     - readline
     - scipy
     - statsmodels
-    - openssh
+    - openssh # [linux]
     - zlib
 
 test:
