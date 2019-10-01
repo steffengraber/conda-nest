@@ -16,7 +16,7 @@ requirements:
   build:
     - cmake >=3.6
     - git
-    #- llvm-openmp  # [osx]
+    - llvm-openmp
     - make
     - sed
     # - {{ compiler('c') }}
