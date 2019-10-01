@@ -7,10 +7,11 @@ ls -l
 mkdir build
 mkdir install
 cd build
+ls -l
 cmake -DCMAKE_INSTALL_PREFIX:PATH=../install \
 	  -DCMAKE_C_COMPILER=gcc\
 	  -DCMAKE_CXX_COMPILER=g++\
-	  ../nest-simulator
+	  ..
 make
 make install
 
