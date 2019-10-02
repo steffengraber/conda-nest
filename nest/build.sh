@@ -11,6 +11,7 @@ cd build
 echo "Now Cmake"
 
 cmake -DCMAKE_INSTALL_PREFIX:PATH=$PREFIX  \
+	  -Dwith-python=3 \
       -DCMAKE_C_COMPILER=gcc-9 \
       -DCMAKE_CXX_COMPILER=g++-9 \
 	  ..
