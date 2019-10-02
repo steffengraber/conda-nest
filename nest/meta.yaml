@@ -18,10 +18,10 @@ extra:
 
 requirements:
   build:
-    - cmake >=3.6
+    # - cmake >=3.6
     - git
     # - llvm-openmp
-    - make
+    # - make
     - sed
     # - {{ compiler('c') }}
     # - {{ compiler('cxx') }}
