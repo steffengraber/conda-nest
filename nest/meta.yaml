@@ -27,9 +27,9 @@ requirements:
     # - {{ compiler('cxx') }}
   host:
     - cython
-    #- gsl
-    - libtool
-    - {{ pin_compatible('libcblas') }}
+    # - gsl
+    # - libtool
+    # - {{ pin_compatible('libcblas') }}
     #- llvm-openmp  # [osx]
     - matplotlib
     - {{ pin_compatible('ncurses') }}
@@ -45,8 +45,8 @@ requirements:
   run:
     - cython
     #- gsl
-    - libtool
-    - {{ pin_compatible('libcblas') }}
+    # - libtool
+    # - {{ pin_compatible('libcblas') }}
     # - llvm-openmp  # [osx]
     - matplotlib
     - {{ pin_compatible('ncurses') }}
