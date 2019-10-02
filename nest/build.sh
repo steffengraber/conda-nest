@@ -11,8 +11,8 @@ cd build
 echo "Now Cmake"
 
 cmake -DCMAKE_INSTALL_PREFIX:PATH=$PREFIX  \
-	  -DCMAKE_C_COMPILER=gcc\
-	  -DCMAKE_CXX_COMPILER=g++\
+      -DCMAKE_C_COMPILER=gcc-9 \
+      -DCMAKE_CXX_COMPILER=g++-9 \
 	  ..
 make clean_all
 make
