@@ -20,7 +20,7 @@ requirements:
   build:
     - cmake >=3.6
     - git
-    - llvm-openmp
+    # - llvm-openmp
     - make
     - sed
     # - {{ compiler('c') }}
@@ -34,7 +34,7 @@ requirements:
     - matplotlib
     - {{ pin_compatible('ncurses') }}
     - {{ pin_compatible('numpy') }}
-    - {{ mpi }}
+    - openmpi
     - openmp
     - python =3.7
     - readline
@@ -47,11 +47,11 @@ requirements:
     - gsl
     - libtool
     - {{ pin_compatible('libcblas') }}
-    #- llvm-openmp  # [osx]
+    # - llvm-openmp  # [osx]
     - matplotlib
     - {{ pin_compatible('ncurses') }}
     - {{ pin_compatible('numpy') }}
-    - {{ mpi }}
+    - openmpi
     - openmp
     - python =3.7
     - python.app # [osx]
