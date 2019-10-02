@@ -1,6 +1,8 @@
 #!/bin/bash
 
 echo "Start Script"
+export CC=$(ls /usr/local/bin/gcc-* | grep '^/usr/local/bin/gcc-\d$')
+export CXX=$(ls /usr/local/bin/g++-* | grep '^/usr/local/bin/g++-\d$')
 
 ls -l
 
