@@ -3,36 +3,6 @@ language: python
 sudo: required
 dist: xenial
 
-addons:
-  apt:
-    packages:
-      - wget
-      - bzip2
-      - build-essential
-      - cmake
-      - libltdl-dev
-      - libreadline6-dev
-      - libncurses5-dev
-      - libgsl0-dev
-      - python-all-dev
-      - ipython
-      - pkg-config
-      - openmpi-bin
-      - libopenmpi-dev
-      - python-nose
-      - libpcre3
-      - libpcre3-dev
-      - llvm-3.6-dev
-      - jq
-      - pep8
-      - libboost-filesystem-dev
-      - libboost-regex-dev
-      - libboost-wave-dev
-      - libboost-python-dev
-      - libboost-program-options-dev
-      - libboost-test-dev
-      - python-mpi4py
-
 matrix:
   include:
     #- os: linux
@@ -41,13 +11,13 @@ matrix:
     #  python: 3.6
     - name: "NEST simulator with Python 3.7 on macOS"
       os: osx
-      osx_image: xcode11  # Python 3.7.2 running on macOS 10.14.3
+      osx_image: xcode10.2  # Python 3.7.2 running on macOS 10.14.3
       language: generic       # 'language: python' is an error on Travis CI macOS
 
 install:
   # brew stuff
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install gsl open-mpi libomp; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew upgrade gcc cmake libtool; fi
+  #- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew upgrade gcc cmake libtool; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then MINICONDA_OS=Linux; else MINICONDA_OS=MacOSX; fi
   - wget https://repo.anaconda.com/miniconda/Miniconda3-latest-$MINICONDA_OS-x86_64.sh -O miniconda.sh
   - bash miniconda.sh -b -p $HOME/miniconda
