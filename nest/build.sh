@@ -14,7 +14,7 @@ cmake -DCMAKE_INSTALL_PREFIX:PATH=$PREFIX  \
       -DCMAKE_C_COMPILER=gcc-9 \
       -DCMAKE_CXX_COMPILER=g++-9 \
 	  ..
-make clean_all
+
 make
 make install
 
