@@ -25,7 +25,7 @@ requirements:
     - matplotlib
     - {{ pin_compatible('ncurses') }}
     - {{ pin_compatible('numpy') }}
-    - python
+    - python =3.7
     - readline
     - scipy
     - openssh
@@ -36,7 +36,7 @@ requirements:
     - matplotlib
     - {{ pin_compatible('ncurses') }}
     - {{ pin_compatible('numpy') }}
-    - python
+    - python =3.7
     - python.app # [osx]
     - readline
     - scipy
