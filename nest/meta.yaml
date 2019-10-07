@@ -43,12 +43,12 @@ requirements:
     - statsmodels
     - openssh
     - zlib
-test:
-  imports:
-    - nest
-  commands:
-    - nest --help
-    - sli --help
+#test:
+#  imports:
+#    - nest
+#  commands:
+#    - nest --help
+#    - sli --help
 
 about:
   home: http://www.nest-simulator.org/
