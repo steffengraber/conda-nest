@@ -40,8 +40,8 @@ script:
   - python3 ./nest/test.py
 
 deploy:
-  skip_cleanup: true
   provider: script
-  script: docker exec -it mini bash nest/anaconda_push.sh
+  script: nest/anaconda_push.sh
   on:
     branch: macos
+
