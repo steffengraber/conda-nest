@@ -1,9 +1,11 @@
 #!/bin/bash
 
 VERSION="master"
+
 conda install -y -c anaconda anaconda-client
 PKG_NAME=$(conda build ./nest . --output)
 
+echo 'PAKETNAME'
 echo $PKG_NAME
 set -- $PKG_NAME
 
