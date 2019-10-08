@@ -37,3 +37,9 @@ install:
 script:
   - conda activate
   - python3 ./nest/test.py
+
+deploy:
+  provider: script
+  script: docker exec -it mini bash /opt/conda-nest/anaconda_push.sh
+  on:
+    branch: macos
