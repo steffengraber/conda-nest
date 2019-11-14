@@ -33,3 +33,5 @@ jobs:
           cd $GITHUB_WORKSPACE
           conda build nest
           conda install nest --use-local
+          nest
+          bash nest/anaconda_push.sh
