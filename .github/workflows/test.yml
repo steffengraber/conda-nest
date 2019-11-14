@@ -9,36 +9,22 @@ jobs:
         os: [ubuntu-18.04, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
-      - name: Dump job context
-        env:
-          JOB_CONTEXT: ${{ toJson(job) }}
-        run: echo "$JOB_CONTEXT"
-      - name: Dump steps context
-        env:
-          STEPS_CONTEXT: ${{ toJson(steps) }}
-        run: echo "$STEPS_CONTEXT"
-      - name: Dump runner context
-        env:
-          RUNNER_CONTEXT: ${{ toJson(runner) }}
-        run: echo "$RUNNER_CONTEXT"
-      - name: Dump strategy context
-        env:
-          STRATEGY_CONTEXT: ${{ toJson(strategy) }}
-        run: echo "$STRATEGY_CONTEXT"
-      - name: Dump matrix context
-        env:
-          MATRIX_CONTEXT: ${{ toJson(matrix) }}
-        run: echo "$MATRIX_CONTEXT"
-      - run: ls -lR $HOME
-      - run: which python
-      - run: which conda
-
-      #- name: CHECK macos
-        #run: if [[ ${{ matrix.os }} == "macos-latest" ]]; then brew install gsl open-mpi libomp; fi
+      - name: Prepare macos
+        run: |
+        if [[ ${{ matrix.os }} == "macos-latest" ]]; then
+          brew install gsl open-mpi libomp;
+          brew link --overwrite gcc;
+          MINICONDA_OS=MacOSX
+          wget https://repo.anaconda.com/miniconda/Miniconda3-latest-$MINICONDA_OS-x86_64.sh -O miniconda.sh
+          bash miniconda.sh -b -p $HOME/miniconda
+          rm miniconda.sh
+          export PATH="$HOME/miniconda/bin:$PATH"
+          source "$HOME/miniconda/etc/profile.d/conda.sh"
+        fi
+      - run: conda config --set always_yes yes --set changeps1 no
+      - run: conda update -q conda
+               # Useful for debugging any issues with conda
+      - run: conda info -a
 
 #    - run: conda config --set always_yes yes --set changeps1 no
 #    - run: conda update -q conda
