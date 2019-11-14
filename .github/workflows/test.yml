@@ -9,11 +9,11 @@ jobs:
         os: [ubuntu-18.04, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - name: RUNNER 1
-        run: if [[ ${{ matrix.os }} == "macos-latest" ]]; then ls /Users/runner; fi
-      - name: Prepare macos
+      - name: BUILD NEST
         run: |
           if [[ ${{ matrix.os }} == "macos-latest" ]]; then
+          brew install gsl open-mpi libomp
+          brew link --overwrite gcc
           MINICONDA_OS=MacOSX
           wget https://repo.anaconda.com/miniconda/Miniconda3-latest-$MINICONDA_OS-x86_64.sh -O miniconda.sh
           bash miniconda.sh -u -b -p $HOME/miniconda
@@ -21,19 +21,9 @@ jobs:
           export PATH="$HOME/miniconda/bin:$PATH"
           echo $PATH
           source "$HOME/miniconda/etc/profile.d/conda.sh"
-          conda info -a
-          conda create -n test python
           fi;
-      - name: RUNNER 2
-        run: if [[ ${{ matrix.os }} == "macos-latest" ]]; then ls /Users/runner; fi
-
-
-
-#    - run: conda config --set always_yes yes --set changeps1 no
-#    - run: conda update -q conda
-#        # Useful for debugging any issues with conda
-#    - run: conda info -a
-#    - run: conda config --add channels conda-forge
-#    - run: conda install -y -c conda-forge conda-build conda-verify
-#    - run: conda build ../../nest
-#    - run: conda install nest --use-local
+          conda info -a
+          conda config --add channels conda-forge
+          conda install -y -c conda-forge conda-build conda-verify
+          conda build ../../nest
+          conda install nest --use-local
