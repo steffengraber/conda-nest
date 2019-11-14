@@ -1,4 +1,4 @@
-name: "test conda nest"
+name: "conda nest steffengraber"
 on:
   pull_request:
   push:
