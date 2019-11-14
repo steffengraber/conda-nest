@@ -37,7 +37,7 @@ jobs:
       - run: which python
 
       - name: CHECK macos
-        run: if [[ "$MATRIX_CONTEXT" == "macos-latest" ]]; then brew install gsl open-mpi libomp; fi
+        run: if [[ ${{ matrix.os }} == "macos-latest" ]]; then brew install gsl open-mpi libomp; fi
 
 #    - run: conda config --set always_yes yes --set changeps1 no
 #    - run: conda update -q conda
