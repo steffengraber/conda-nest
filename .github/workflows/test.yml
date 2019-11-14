@@ -10,11 +10,12 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v1
-    - run: conda config --set always_yes yes --set changeps1 no
-    - run: conda update -q conda
-        # Useful for debugging any issues with conda
-    - run: conda info -a
-    - run: conda config --add channels conda-forge
-    - run: conda install -y -c conda-forge conda-build conda-verify
-    - run: conda build ../../nest
-    - run: conda install nest --use-local
+    - run: ls $HOME
+#    - run: conda config --set always_yes yes --set changeps1 no
+#    - run: conda update -q conda
+#        # Useful for debugging any issues with conda
+#    - run: conda info -a
+#    - run: conda config --add channels conda-forge
+#    - run: conda install -y -c conda-forge conda-build conda-verify
+#    - run: conda build ../../nest
+#    - run: conda install nest --use-local
