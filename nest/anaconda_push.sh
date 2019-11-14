@@ -1,6 +1,8 @@
 #!/bin/bash
 
 VERSION="master"
+
+echo "CREATE ENV UPLOAD"
 conda create --name upload
 conda activate upload
 conda install -y -c anaconda anaconda-client
