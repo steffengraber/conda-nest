@@ -16,6 +16,8 @@ echo '########## UPLOAD ###########'
 echo $1
 echo '########## START ANACONDA CLIENT ###########'
 
+echo $CO2USER
+
 anaconda -t $CO2TOKEN upload --version ${VERSION} --force -u $CO2USER -l 'macos' $1
 
 echo '########## END ANACONDA CLIENT ###########'
