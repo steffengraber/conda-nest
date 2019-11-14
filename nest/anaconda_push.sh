@@ -3,9 +3,7 @@
 VERSION="master"
 
 echo "CREATE ENV UPLOAD"
-conda create --name upload
-conda activate upload
-conda install -y -c anaconda anaconda-client
+pip install anaconda-client
 PKG_NAME=$(conda build ./nest . --output)
 
 echo 'PAKETNAME'
