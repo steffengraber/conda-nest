@@ -3,7 +3,7 @@ on:
   pull_request:
   push:
   schedule:
-    - cron: '0 22 * * 1-7'
+    - cron: '0 22 * * 0 - 6'
 jobs:
   tests:
     strategy:
