@@ -35,6 +35,7 @@ jobs:
         run: echo "$MATRIX_CONTEXT"
       - run: ls $HOME
       - run: which python
+      - run: which conda
 
       - name: CHECK macos
         run: if [[ ${{ matrix.os }} == "macos-latest" ]]; then brew install gsl open-mpi libomp; fi
