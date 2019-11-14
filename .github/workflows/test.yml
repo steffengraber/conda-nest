@@ -13,7 +13,7 @@ jobs:
       - name: Workspace
         run: |
           echo $GITHUB_WORKSPACE
-          ls -l /home/runner/work/conda-nest/conda-nest
+          ls -l $GITHUB_WORKSPACE
       - name: BUILD NEST
         run: |
           if [[ ${{ matrix.os }} == "macos-latest" ]]; then
