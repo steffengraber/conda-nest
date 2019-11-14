@@ -69,7 +69,7 @@ if [[ $(uname) == Darwin ]]; then
 fi
 
 
-make -j${CPU_COUNT}
+make
 make install
 
 if [[ -d ${PREFIX}/lib64 ]]

@@ -11,6 +11,7 @@ source:
 
 build:
   osx_is_app: True
+  skip: true  # [win or py<30]
 
 extra:
   channels:
@@ -18,10 +19,16 @@ extra:
 
 requirements:
   build:
+    - cmake >=3.6
     - git
     - sed
+    - - llvm-openmp  # [osx]
+      - make
+      - - {{ compiler('c') }}
+        - {{ compiler('cxx') }}
   host:
     - cython
+    - gsl
     - matplotlib
     - {{ pin_compatible('ncurses') }}
     - {{ pin_compatible('numpy') }}
@@ -31,12 +38,15 @@ requirements:
     - openssh
     - statsmodels
     - zlib
+    - libtool
   run:
     - cython
+    - gsl
+    - libtool
     - matplotlib
     - {{ pin_compatible('ncurses') }}
     - {{ pin_compatible('numpy') }}
-    - python =3.7
+    - python
     - python.app # [osx]
     - readline
     - scipy
