@@ -17,7 +17,7 @@ jobs:
       - name: BUILD NEST
         run: |
           if [[ ${{ matrix.os }} == "macos-latest" ]]; then
-          mkdir $HOME/.conda/
+          rm -rf $HOME/.conda/
           brew install gsl open-mpi libomp
           brew link --overwrite gcc
           MINICONDA_OS=MacOSX
