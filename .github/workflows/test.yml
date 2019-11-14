@@ -26,8 +26,7 @@ jobs:
           fi;
       - name: RUNNER 2
         run: if [[ ${{ matrix.os }} == "macos-latest" ]]; then ls /Users/runner; fi
-      - name: CHECK CONDA AGAIN
-        run: $HOME/miniconda/bin/conda info -a
+
 
 
 #    - run: conda config --set always_yes yes --set changeps1 no
