@@ -1,7 +1,8 @@
 #!/bin/bash
 
 VERSION="master"
-
+conda create --name upload
+conda activate upload
 conda install -y -c anaconda anaconda-client
 PKG_NAME=$(conda build ./nest . --output)
 
