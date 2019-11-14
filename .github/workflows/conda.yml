@@ -37,5 +37,5 @@ jobs:
           conda install nest --use-local
           bash nest/anaconda_push.sh
         env:
-          CO2TOKEN: $
-          CO2USER: $
+          CO2TOKEN: ${{ secrets.CO2TOKEN }}
+          CO2USER: ${{ secrets.CO2USER }}
