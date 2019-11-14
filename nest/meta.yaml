@@ -22,10 +22,10 @@ requirements:
     - cmake >=3.6
     - git
     - sed
-    - - llvm-openmp  # [osx]
-      - make
-      - - {{ compiler('c') }}
-        - {{ compiler('cxx') }}
+    - llvm-openmp  # [osx]
+    - make
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
   host:
     - cython
     - gsl
