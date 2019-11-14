@@ -2,6 +2,7 @@
 
 export MPI_FLAGS=--allow-run-as-root
 
+
 if [[ $(uname) == Linux ]]; then
     export MPI_FLAGS="$MPI_FLAGS;-mca;plm;isolated"
 	export CFLAGS="-I${PREFIX}/include"
@@ -83,3 +84,4 @@ do
     mkdir -p "${PREFIX}/etc/conda/${CHANGE}.d"
     sed "s#!!!SP_DIR!!!#${SP_DIR}#g" "${RECIPE_DIR}/${CHANGE}.sh" > "${PREFIX}/etc/conda/${CHANGE}.d/${PKG_NAME}_${CHANGE}.sh"
 done
+
