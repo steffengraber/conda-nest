@@ -25,5 +25,5 @@ jobs:
           conda info -a
           conda config --add channels conda-forge
           conda install -y -c conda-forge conda-build conda-verify
-          conda build ../../nest
+          conda build $GITHUB_WORKSPACE/nest
           conda install nest --use-local
