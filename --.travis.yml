@@ -3,36 +3,6 @@ language: python
 sudo: required
 dist: xenial
 
-addons:
-  apt:
-    packages:
-      - wget
-      - bzip2
-      - build-essential
-      - cmake
-      - libltdl-dev
-      - libreadline6-dev
-      - libncurses5-dev
-      - libgsl0-dev
-      - python-all-dev
-      - ipython
-      - pkg-config
-      - openmpi-bin
-      - libopenmpi-dev
-      - python-nose
-      - libpcre3
-      - libpcre3-dev
-      - llvm-3.6-dev
-      - jq
-      - pep8
-      - libboost-filesystem-dev
-      - libboost-regex-dev
-      - libboost-wave-dev
-      - libboost-python-dev
-      - libboost-program-options-dev
-      - libboost-test-dev
-      - python-mpi4py
-
 matrix:
   include:
     #- os: linux
@@ -41,92 +11,37 @@ matrix:
     #  python: 3.6
     - name: "NEST simulator with Python 3.7 on macOS"
       os: osx
-      osx_image: xcode11  # Python 3.7.2 running on macOS 10.14.3
+      osx_image: xcode10.3  # Python 3.7.2 running on macOS 10.14.3
       language: generic       # 'language: python' is an error on Travis CI macOS
 
-before_install:
-  - echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
-  - echo "+         P R E P A R E   N E S T   B U I L D   E N V I R O N M E N T         +"
-  - echo "+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +"
-  # - echo ${MATRIX_EVAL}
-  # - eval "${MATRIX_EVAL}"
-  - export SOURCEDIR=$PWD
-  - echo $PWD
-  - ls $PWD
-  # - cp extras/install_music.sh extras/install_csa-libneurosim.sh $HOME
-  # - cd $HOME/build
-  - echo $PATH
-  # Upgrade pip and setuptools
-####  - if [[ $TRAVIS_BUILD_STAGE_NAME == "Gcc8clang7" ]]; then pyenv global 3.6.3; fi
-####  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew --version; brew update; brew tap brewsci/science; brew tap
-####  brewsci/bio; brew install coreutils gsl open-mpi automake autoconf libtool; brew upgrade python; brew install
-####  libomp;fi
-   # Install Miniconda
+install:
+  # brew stuff
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install gsl open-mpi libomp; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then  brew link --overwrite gcc; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then MINICONDA_OS=Linux; else MINICONDA_OS=MacOSX; fi
   - wget https://repo.anaconda.com/miniconda/Miniconda3-latest-$MINICONDA_OS-x86_64.sh -O miniconda.sh
-  - bash miniconda.sh -b -p "$HOME"/miniconda
+  - bash miniconda.sh -b -p $HOME/miniconda
+  - rm miniconda.sh
   - export PATH="$HOME/miniconda/bin:$PATH"
-  - source "$HOME"/miniconda/etc/profile.d/conda.sh
+  - source "$HOME/miniconda/etc/profile.d/conda.sh"
   - hash -r
   - conda config --set always_yes yes --set changeps1 no
   - conda update -q conda
-  - conda config --add channels conda-forge
+  # Useful for debugging any issues with conda
   - conda info -a
+  - conda config --add channels conda-forge
   - conda install -y -c conda-forge conda-build conda-verify
-  # - conda create --yes -n test
-  # - source activate test
-#  - conda install -y -c anaconda conda-build conda-verify automake autoconf libtool wget setuptools git
-#  # - if [[ "$TRAVIS_OS_NAME" = "linux" ]]; then conda install -y -c anaconda gcc_linux-64 gxx_linux-64; fi
-#  # - if [[ "$TRAVIS_OS_NAME" = "osx" ]]; then conda install -y -c anaconda clang_osx-64 clangxx_osx-64 llvm
-#  # - llvm-openmp; fi
-#  # - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew --version; brew update; brew tap brewsci/science; brew tap
-#  # - brewsci/bio; brew install coreutils; fi
-#  # - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew --version; brew install coreutils; fi
-  - conda clean -y --all
-####  - pip install cython scipy matplotlib terminaltables
-####  - pip install numpy==1.13.3
-  - echo "BEFORE INSTALL END"
-  - echo "BUILD NOW"
   - conda build nest
-  - echo "BUILD END"
-  - which cython
-  - cython --version
-  - which python
-  - python --version
-  - which pip
-  - which g++
-  - g++ -v
-  - which clang
-  - clang -v
-  - pip list
-  ####  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then which nosetests; nosetests --version; nosetests --plugins; fi
-  - which cmake
-  - cmake --version
-  - echo ${CC}
-  - echo ${CXX}
-  - ls -l
-  - echo "INSTALL NOW"
   - conda install nest --use-local
-
-install:
-####  - chmod +x ./nest/travis_build.sh
-####  - ./nest/travis_build.sh
-  - nest --help
-  - sli --help
-####  - ls -l
-####  - ls -l install/
-####  - ls -l nest/
-####  - . install/bin/nest_vars.sh
-####  - nest --help
+  - sudo xcode-select -s /Library/Developer/CommandLineTools/
 
 script:
-  # - conda install --use-local nest-simulator
+  - conda activate
   - python3 ./nest/test.py
-#
-#deploy:
-#  skip_cleanup: true
-#  provider: script
-#  # script: /bin/bash nest/anaconda_push.sh
-#  script: echo "DEPLOY NOW"
-#  on:
-#    branch: master
+
+deploy:
+  provider: script
+  script: bash nest/anaconda_push.sh
+  on:
+    branch: macos
+

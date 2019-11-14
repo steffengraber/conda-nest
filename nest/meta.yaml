@@ -1,96 +1,64 @@
 {% set name = "nest" %}
-{% set version = "v2.18.0" %}
+{% set version = "2.18.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  git_rev: {{ version  }}
-  git_url: https://github.com/nest/nest-simulator.git
+  url: https://github.com/nest/{{ name }}-simulator/archive/v{{ version }}.tar.gz
+  sha256: 7295c936fbdd5486395b06f54f0d4d35d9a1b6ee50b7b844186ec2c92de641d1
 
 build:
-  skip: true  # [win]
-  skip: true  # [osx]
-  # skip: true  # [py<30]
-  # osx_is_app: True
+  osx_is_app: True
+  skip: true  # [win or py<30]
 
-requirements:
+extra:
   channels:
     - conda-forge
-    - defaults
+
+requirements:
   build:
     - cmake >=3.6
     - git
-    # - llvm-openmp
-    - make
     - sed
-    # - gcc
+    - llvm-openmp  # [osx]
+    - make
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    # - clang
-    # - clang_osx-64
-    # - clangxx
-    # - clangxx_osx-64
-    # - llvm
-    # - llvm-lto-tapi
-    # -  llvm-openmp
   host:
-    - ca-certificates
-    - compiler-rt
     - cython
     - gsl
-    - {{ pin_compatible('libcblas') }}
-    - libtool
-    # - libcxx
-    # - libcxxabi
-    - libedit
-    - libffi
-    - libssh2
-    - libuv
-    - libtool
-    # - llvm-openmp # [osx]
     - matplotlib
-    - mpi4py
-    - openmp
-    - libiconv
     - {{ pin_compatible('ncurses') }}
     - {{ pin_compatible('numpy') }}
-    - openssl
-    - perl
-    - python =3.7
-    - rhash
+    - python
     - readline
     - scipy
-    - tk
-    - xz
     - openssh
     - statsmodels
     - zlib
+    - libtool
   run:
     - cython
     - gsl
-    - {{ pin_compatible('libcblas') }}
     - libtool
-    # - llvm-openmp  # [osx]
     - matplotlib
-    - openmp
     - {{ pin_compatible('ncurses') }}
     - {{ pin_compatible('numpy') }}
-    - python =3.7
-    - python.app  # [osx]
+    - python
+    - python.app # [osx]
     - readline
     - scipy
     - statsmodels
     - openssh
     - zlib
-
-test:
-  #imports:
-  #  - nest
-  commands:
-    - nest --help
-    - sli --help
+#test:
+#  imports:
+#    - nest
+#  commands:
+#    - nest --help
+#    - sli --help
 
 about:
   home: http://www.nest-simulator.org/
@@ -104,10 +72,3 @@ about:
 
   doc_url: https://nest-simulator.readthedocs.io/en/latest/
   dev_url: https://github.com/nest/nest-simulator
-
-extra:
-  recipe-maintainers:
-    - steffengraber
-  container:
-    # openmpi needs ssh/rsh
-    extended-base: true
