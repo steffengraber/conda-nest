@@ -10,7 +10,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: Workspace
-        run: ls $GITHUB_WORKSPACE
+        run: echo $GITHUB_WORKSPACE
 #      - name: BUILD NEST
 #        run: |
 #          if [[ ${{ matrix.os }} == "macos-latest" ]]; then
