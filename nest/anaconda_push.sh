@@ -29,6 +29,6 @@ echo $1
 echo '########## START ANACONDA CLIENT ###########'
 
 
-$CONDA_BIN -t $CO2TOKEN upload --version ${VERSION} --force -u steffengraber -l 'testing' $1
+$CONDA_BIN -t $CO2TOKEN upload --force -u $CO2USER -l 'main' $1
 
 echo '########## END ANACONDA CLIENT ###########'
