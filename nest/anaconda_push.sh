@@ -3,7 +3,7 @@
 VERSION="master"
 
 echo "CREATE ENV UPLOAD"
-pip install anaconda-client
+pip3 install anaconda-client
 PKG_NAME=$(conda build ./nest . --output)
 
 echo 'PAKETNAME'
@@ -15,6 +15,6 @@ echo $1
 echo '########## START ANACONDA CLIENT ###########'
 
 
-anaconda -t $CO2TOKEN upload --version ${VERSION} --force -u $CO2USER -l 'macos' $1
+bash anaconda -t $CO2TOKEN upload --version ${VERSION} --force -u $CO2USER -l 'macos' $1
 
 echo '########## END ANACONDA CLIENT ###########'
