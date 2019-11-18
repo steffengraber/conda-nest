@@ -40,6 +40,7 @@ requirements:
     - zlib
     - libtool
   run:
+    - {{ compiler('cxx') }}
     - cython
     - gsl
     - libtool
@@ -55,6 +56,8 @@ requirements:
     - zlib
 
 test:
+  imports:
+    - nest
   commands:
     - nest --help
     - sli --help
