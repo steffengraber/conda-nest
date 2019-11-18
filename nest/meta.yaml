@@ -39,9 +39,6 @@ requirements:
     - statsmodels
     - zlib
     - libtool
-    - dependencies:
-        - pip:
-            nestml
   run:
     - cython
     - gsl
@@ -56,9 +53,6 @@ requirements:
     - statsmodels
     - openssh
     - zlib
-    - dependencies:
-        - pip:
-            nestml
 
 test:
   commands:
