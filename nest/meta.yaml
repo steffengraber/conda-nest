@@ -59,6 +59,12 @@ requirements:
     - dependencies:
         - pip:
             nestml
+
+test:
+  commands:
+    - nest --help
+    - sli --help
+
 about:
   home: http://www.nest-simulator.org/
   license:  GPL-2.0
