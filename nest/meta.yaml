@@ -30,8 +30,8 @@ requirements:
     - cython
     - gsl
     - matplotlib
-    - {{ pin_compatible('ncurses') }}
-    - {{ pin_compatible('numpy') }}
+    - ncurses
+    - numpy
     - python
     - readline
     - scipy
@@ -39,13 +39,16 @@ requirements:
     - statsmodels
     - zlib
     - libtool
+    - dependencies:
+        - pip:
+            nestml
   run:
     - cython
     - gsl
     - libtool
     - matplotlib
-    - {{ pin_compatible('ncurses') }}
-    - {{ pin_compatible('numpy') }}
+    - ncurses
+    - numpy
     - python
     - python.app # [osx]
     - readline
@@ -53,18 +56,9 @@ requirements:
     - statsmodels
     - openssh
     - zlib
-    - pip
-
-dependencies:
-  - pip:
-      nestml
-#test:
-#  imports:
-#    - nest
-#  commands:
-#    - nest --help
-#    - sli --help
-
+    - dependencies:
+        - pip:
+            nestml
 about:
   home: http://www.nest-simulator.org/
   license:  GPL-2.0
