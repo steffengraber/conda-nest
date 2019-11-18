@@ -54,6 +54,10 @@ requirements:
     - openssh
     - zlib
     - pip
+
+dependencies:
+  - pip:
+      nestml
 #test:
 #  imports:
 #    - nest
