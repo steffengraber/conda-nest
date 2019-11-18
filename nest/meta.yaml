@@ -53,6 +53,8 @@ requirements:
     - statsmodels
     - openssh
     - zlib
+    - pip:
+       - nestml
 #test:
 #  imports:
 #    - nest
