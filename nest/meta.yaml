@@ -6,8 +6,10 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/nest/{{ name }}-simulator/archive/{{ version }}.tar.gz
-  sha256: 7295c936fbdd5486395b06f54f0d4d35d9a1b6ee50b7b844186ec2c92de641d1
+  git_url: https://github.com/nest/nest-simulator
+  git_tag: nest-3
+  # url: https://github.com/nest/{{ name }}-simulator/archive/{{ version }}.tar.gz
+  # sha256: 7295c936fbdd5486395b06f54f0d4d35d9a1b6ee50b7b844186ec2c92de641d1
 
 build:
   osx_is_app: True
@@ -29,9 +31,9 @@ requirements:
   host:
     - cython
     - gsl
-    - matplotlib
+    # - matplotlib
     - ncurses
-    - numpy
+    # - numpy
     - python
     - readline
     - scipy
@@ -44,9 +46,9 @@ requirements:
     - cython
     - gsl
     - libtool
-    - matplotlib
+    # - matplotlib
     - ncurses
-    - numpy
+    # - numpy
     - python
     - python.app # [osx]
     - readline
