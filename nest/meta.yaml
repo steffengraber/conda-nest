@@ -31,7 +31,7 @@ requirements:
     - cython
     - gsl
     # - matplotlib
-    - libclas
+    - libcblas
     - libtool
     - ncurses
     # - numpy
