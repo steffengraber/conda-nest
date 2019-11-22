@@ -1,5 +1,5 @@
 {% set name = "nest" %}
-{% set version = "v2.18.0" %}
+{% set version = "nest-3" %}
 
 package:
   name: {{ name|lower }}
@@ -22,8 +22,7 @@ extra:
 requirements:
   build:
     - cmake >=3.6
-    - git
-    - sed
+    # - sed
     - llvm-openmp  # [osx]
     - make
     - {{ compiler('c') }}
@@ -32,6 +31,8 @@ requirements:
     - cython
     - gsl
     # - matplotlib
+    - libclas
+    - libtool
     - ncurses
     # - numpy
     - python
@@ -40,12 +41,12 @@ requirements:
     - openssh
     - statsmodels
     - zlib
-    - libtool
   run:
-    - {{ compiler('cxx') }}
+    # - {{ compiler('cxx') }}
     - cython
     - gsl
     - libtool
+    - llvm-openmp  # [osx]
     # - matplotlib
     - ncurses
     # - numpy
