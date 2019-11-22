@@ -56,6 +56,8 @@ fi
 
 # OSX build
 if [[ $(uname) == Darwin ]]; then
+    echo "DER GESUCHTE PFATD DYLD_LIBRARY_PATH"
+    echo $DYLD_LIBRARY_PATH
 	cmake -DCMAKE_INSTALL_PREFIX:PATH=${PREFIX} \
 		  -DCMAKE_OSX_SYSROOT=${CONDA_BUILD_SYSROOT} \
 		  -Dwith-mpi=OFF \
