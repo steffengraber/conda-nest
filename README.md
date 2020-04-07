@@ -1,6 +1,5 @@
 ![conda nest steffengraber](https://github.com/steffengraber/conda-nest/workflows/conda%20nest%20steffengraber/badge.svg)
 
-
 # NEST simulator - conda build files
 
 This is for testing the conda-forge packages <https://anaconda.org/conda-forge/nest-simulator>
