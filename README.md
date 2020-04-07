@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/steffengraber/conda-nest.svg?branch=master)](https://travis-ci.org/steffengraber/conda-nest)
+![conda nest steffengraber](https://github.com/steffengraber/conda-nest/workflows/conda%20nest%20steffengraber/badge.svg)
+
 
 # NEST simulator - conda build files
 
