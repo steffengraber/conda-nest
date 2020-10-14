@@ -45,7 +45,6 @@ echo "Der MPI-Flag lautet: ${mpi_arg}"
 # Linux build
 if [[ $(uname) == Linux ]]; then
 	cmake -DCMAKE_INSTALL_PREFIX:PATH=${PREFIX} \
-		  -Dwith-python=ON \
 		  ..
 fi
 

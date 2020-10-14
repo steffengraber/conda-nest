@@ -43,6 +43,10 @@ Until now tested with:
 2.  Build the package
 
         conda build .
+    
+    sometime you may need to explicitly add the recipe and channel
+    
+        conda build nest/meta.yaml -c conda-forge
 
 3.  Install it
 
