@@ -45,12 +45,7 @@ echo "Der MPI-Flag lautet: ${mpi_arg}"
 # Linux build
 if [[ $(uname) == Linux ]]; then
 	cmake -DCMAKE_INSTALL_PREFIX:PATH=${PREFIX} \
-		  -Dwith-mpi=${mpi_arg} \
-		  -Dwith-openmp=${mpi_arg} \
 		  -Dwith-python=ON \
-		  -Dwith-gsl=${PREFIX} \
-		  -DREADLINE_ROOT_DIR=${PREFIX} \
-		  -DLTDL_ROOT_DIR=${PREFIX} \
 		  ..
 fi
 
