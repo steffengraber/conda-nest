@@ -29,6 +29,7 @@ requirements:
     - {{ compiler('cxx') }}
   host:
     - cython
+    - boost
     - gsl
     # - matplotlib
     - libcblas
