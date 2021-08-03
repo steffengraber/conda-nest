@@ -13,7 +13,7 @@ source:
 
 build:
   osx_is_app: True
-  skip: true  # [win or py<38]
+  skip: true  # [win or py<38 or python_impl == 'pypy']
 
 extra:
   channels:
