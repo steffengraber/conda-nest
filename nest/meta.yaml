@@ -27,16 +27,16 @@ requirements:
     - conda-forge::gxx_linux-64 
     - conda-forge::libgcc-ng 
     - conda-forge::libstdcxx-ng
-    - conda-forge::cmake >= 3.12
+    - conda-forge::cmake >=3.12
   host:
-    - conda-forge::python >= 3.8
+    - conda-forge::python >=3.8
     - conda-forge::pip
     - conda-forge::binutils_impl_linux-64 
     - conda-forge::binutils_linux-64 	
     - conda-forge::cython
     - conda-forge::openmpi
-    - conda-forge::boost >= 1.69
-    - conda-forge::gsl >= 1.11
+    - conda-forge::boost >=1.69
+    - conda-forge::gsl >=1.11
     - conda-forge::libtool
     - conda-forge::readline
   run:
