@@ -18,37 +18,27 @@ build:
 extra:
   channels:
     - conda-forge
-    - defaults
 
 requirements:
   build:
-    - cmake >=3.12
-    - llvm-openmp  # [osx]
-    - make
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
+    - conda-forge::gcc_impl_linux-64 
+	- conda-forge::gcc_linux-64
+	- conda-forge::gxx_impl_linux-64 
+	- conda-forge::gxx_linux-64 
+	- conda-forge::libgcc-ng 
+	- conda-forge::libstdcxx-ng
+	- conda-forge::cmake >= 3.12
   host:
-    - boost
-    - cython
-    - gsl
-    - ipython
-    - {{ pin_compatible('libcblas') }}
-    - libtool
-    - llvm-openmp  # [osx]
-    - {{ pin_compatible('ncurses') }}
-    - matplotlib-base
-    - mpi4py
-    - nose
-    - numpy
-    - openmp  # [linux]
-    - python
-    - pip
-    - readline
-    - scipy
-    - openssh
-    - setuptools
-    - statsmodels
-    - zlib
+    - conda-forge::python >= 3.8
+    - conda-forge::pip
+	- conda-forge::binutils_impl_linux-64 
+	- conda-forge::binutils_linux-64 	
+	- conda-forge::cython
+	- conda-forge::openmpi
+	- conda-forge::boost >= 1.69
+	- conda-forge::gsl >= 1.11
+	- conda-forge::libtool
+	- conda-forge::readline
   run:
     - boost
     - cython
