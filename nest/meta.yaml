@@ -18,6 +18,7 @@ build:
 extra:
   channels:
     - conda-forge
+    - defaults
 
 requirements:
   build:
