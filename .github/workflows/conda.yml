@@ -10,8 +10,6 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v1
-        with:
-          python-version: 3.8
       - name: Workspace
         run: |
           echo $GITHUB_WORKSPACE
