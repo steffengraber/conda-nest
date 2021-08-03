@@ -13,7 +13,7 @@ source:
 
 build:
   osx_is_app: True
-  skip: true  # [win or py<30]
+  skip: true  # [win or py<38 or py>38]
 
 extra:
   channels:
@@ -22,7 +22,6 @@ extra:
 requirements:
   build:
     - cmake >=3.12
-    - cython
     - llvm-openmp  # [osx]
     - make
     - {{ compiler('c') }}
