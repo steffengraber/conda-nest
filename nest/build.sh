@@ -20,6 +20,11 @@ if [[ $(uname) == Darwin ]] && [[ -n ${CONDA_BUILD_SYSROOT} ]]; then
 	# Using Travis standard gcc and g++
 	# export CC=$(ls /usr/local/bin/gcc-* | grep '^/usr/local/bin/gcc-\d$')
     # export CXX=$(ls /usr/local/bin/g++-* | grep '^/usr/local/bin/g++-\d$')
+else
+    MPI_FLAGS="$MPI_FLAGS;-mca;plm;isolated"
+	CFLAGS="-I${PREFIX}/include"
+	LDFLAGS="-L${PREFIX}/lib"
+	CXXFLAGS="${CXXFLAGS} -lrt"
 fi
 
 CPPFLAGS=${CPPFLAGS}" -I${PREFIX}/include"
