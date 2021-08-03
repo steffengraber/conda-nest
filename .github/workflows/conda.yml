@@ -1,9 +1,9 @@
-name: "nest@conda"
+name: "nest3@conda"
 on:
   pull_request:
   push:
-  schedule:
-    - cron: '0 22 * * *'
+  # schedule:
+  #  - cron: '0 22 * * *'
 jobs:
   tests:
     strategy:
