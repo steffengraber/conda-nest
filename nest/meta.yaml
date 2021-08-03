@@ -21,44 +21,53 @@ extra:
 
 requirements:
   build:
-    - cmake >=3.6
-    # - sed
+    - cmake >=3.12
+    - cython
     - llvm-openmp  # [osx]
     - make
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
-    - cython
     - boost
+    - cython
     - gsl
-    # - matplotlib
-    - libcblas
+    - ipython
+    - {{ pin_compatible('libcblas') }}
     - libtool
-    - ncurses
-    # - numpy
+    - llvm-openmp  # [osx]
+    - {{ pin_compatible('ncurses') }}
+    - matplotlib-base
+    - mpi4py
+    - nose
+    - numpy
+    - openmp  # [linux]
     - python
+    - pip
     - readline
     - scipy
     - openssh
+    - setuptools
     - statsmodels
     - zlib
   run:
-    # - {{ compiler('cxx') }}
+    - boost
     - cython
     - gsl
+    - {{ pin_compatible('libcblas') }}
     - libtool
     - llvm-openmp  # [osx]
-    # - matplotlib
-    - ncurses
-    # - numpy
+    - matplotlib-base
+    - {{ pin_compatible('ncurses') }}
+    - {{ pin_compatible('numpy') }}
+    - mpi4py
+    - openmp  # [linux]
     - python
-    - python.app # [osx]
+    - python.app  # [osx]
     - readline
     - scipy
     - statsmodels
     - openssh
     - zlib
-
 test:
   imports:
     - nest
