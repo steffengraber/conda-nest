@@ -1,5 +1,5 @@
 {% set name = "nest" %}
-{% set version = "nest3" %}
+{% set version = "nest3.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   git_url: https://github.com/nest/nest-simulator
-  git_tag: v3.0
+  git_tag: v3.1
   # url: https://github.com/nest/{{ name }}-simulator/archive/{{ version }}.tar.gz
   # sha256: 7295c936fbdd5486395b06f54f0d4d35d9a1b6ee50b7b844186ec2c92de641d1
 
@@ -21,24 +21,24 @@ extra:
 
 requirements:
   build:
-    - conda-forge::gcc_impl_linux-64 
-    - conda-forge::gcc_linux-64
-    - conda-forge::gxx_impl_linux-64 
-    - conda-forge::gxx_linux-64 
-    - conda-forge::libgcc-ng 
-    - conda-forge::libstdcxx-ng
-    - conda-forge::cmake >=3.12
+    - gcc_impl_linux-64 
+    - gcc_linux-64
+    - gxx_impl_linux-64 
+    - gxx_linux-64 
+    - libgcc-ng 
+    - libstdcxx-ng
+    - cmake >=3.12
   host:
-    - conda-forge::python >=3.8
-    - conda-forge::pip
-    - conda-forge::binutils_impl_linux-64 
-    - conda-forge::binutils_linux-64 	
-    - conda-forge::cython
-    - conda-forge::openmpi
-    - conda-forge::boost >=1.69
-    - conda-forge::gsl >=1.11
-    - conda-forge::libtool
-    - conda-forge::readline
+    - python >=3.8
+    - pip
+    - binutils_impl_linux-64 
+    - binutils_linux-64 	
+    - cython
+    - openmpi
+    - boost >=1.69
+    - gsl >=1.11
+    - libtool
+    - readline
   run:
     - boost
     - cython
