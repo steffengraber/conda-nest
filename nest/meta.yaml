@@ -1,5 +1,5 @@
 {% set name = "nest" %}
-{% set version = "nest3.1" %}
+{% set version = "2.20.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   git_url: https://github.com/nest/nest-simulator
-  git_tag: v3.1
+  git_tag: v2.20.2
   # url: https://github.com/nest/{{ name }}-simulator/archive/{{ version }}.tar.gz
   # sha256: 7295c936fbdd5486395b06f54f0d4d35d9a1b6ee50b7b844186ec2c92de641d1
 
@@ -17,6 +17,11 @@ build:
 
 extra:
   channels:
+    - conda-forge
+
+channels:
+  # sources selects the channels to pull packages from, in order.
+  sources:
     - conda-forge
 
 requirements:
@@ -29,35 +34,30 @@ requirements:
     - libstdcxx-ng
     - cmake >=3.12
   host:
-    - python >=3.8
+    - python==3.10
     - pip
     - binutils_impl_linux-64 
-    - binutils_linux-64 	
+    - binutils_linux-64
     - cython
     - openmpi
     - boost >=1.69
     - gsl >=1.11
     - libtool
     - readline
+    - numpy
   run:
     - boost
     - cython
     - gsl
-    - {{ pin_compatible('libcblas') }}
     - libtool
-    - llvm-openmp  # [osx]
     - matplotlib-base
-    - {{ pin_compatible('ncurses') }}
-    - {{ pin_compatible('numpy') }}
     - mpi4py
-    - openmp  # [linux]
-    - python
+    - python==3.10
     - python.app  # [osx]
     - readline
     - scipy
     - statsmodels
-    - openssh
-    - zlib
+    - numpy
 test:
   imports:
     - nest
